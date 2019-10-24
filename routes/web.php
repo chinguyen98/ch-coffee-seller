@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'CoffeesController@index');
+
+Route::resource('coffee', 'CoffeesController');
+
+Route::resource('intros', 'IntrosController');
