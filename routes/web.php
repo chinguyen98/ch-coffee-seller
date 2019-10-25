@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'CoffeesController@index');
+Route::get('/', 'HomeController@index');
 
 Route::resource('coffee', 'CoffeesController');
 

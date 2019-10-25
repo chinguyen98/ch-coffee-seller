@@ -13,7 +13,7 @@ class CoffeesController extends Controller
 	 */
 	public function index()
 	{
-		return view('coffees/index')->with(['title'=>'Trang chủ','homeactive'=>'active']);
+		
 	}
 
 	/**

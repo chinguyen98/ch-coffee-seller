@@ -1,7 +1,6 @@
 @extends('layouts/app')
 
 <section class="home-slider owl-carousel">
-
 	<div class="slider-item" style="background-image: url(images/introbanner.jpg);" data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">
@@ -12,6 +11,20 @@
 					<p class="breadcrumbs"><span class="mr-2"><a href="/">Trang chủ</a></span> <span>Giới thiệu</span></p>
 				</div>
 
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="ftco-menu">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-7 heading-section text-center ftco-animate">
+				<span class="subheading">CH Coffee</span>
+				<h2 class="mb-4 mt-2">Xìn chào các bạn</h2>
+				<div class="slogan sloganknst">
+					<p>Đàn ông rất giống cà phê <br> bởi nếu là loại ngon sẽ làm bạn mất ngủ!</p>
+				</div>
 			</div>
 		</div>
 	</div>
