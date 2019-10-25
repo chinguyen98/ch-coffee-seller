@@ -5,9 +5,25 @@
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row slider-text justify-content-center align-items-center">
+
 				<div class="col-md-7 col-sm-12 text-center ftco-animate">
-					<h1 class="mb-3 mt-5 bread">Sản phẩm</h1>
-					<p class="breadcrumbs"><span class="mr-2"><a href="/">Trang chủ</a></span> <span>Sản phẩm</span></p>
+					<h1 class="mb-3 mt-5 bread">Tin tức</h1>
+					<p class="breadcrumbs"><span class="mr-2"><a href="/">Trang chủ</a></span> <span>Tin tức</span></p>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="ftco-menu">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-7 heading-section text-center ftco-animate">
+				<span class="subheading">CH Coffee</span>
+				<h2 class="mb-4 mt-2">Khuyến mãi</h2>
+				<div class="slogan sloganknst">
+					<p>Đàn ông rất giống cà phê <br> bởi nếu là loại ngon sẽ làm bạn mất ngủ!</p>
 				</div>
 			</div>
 		</div>
@@ -19,7 +35,7 @@
 		<div class="row justify-content-center">
 			<div class="col-md-7 heading-section text-center ftco-animate">
 				<span class="subheading">CH Coffee</span>
-				<h2 class="mb-4 mt-2">Danh mục sản phẩm</h2>
+				<h2 class="mb-4 mt-2">Tin tức</h2>
 				<div class="slogan sloganknst">
 					<p>Đàn ông rất giống cà phê <br> bởi nếu là loại ngon sẽ làm bạn mất ngủ!</p>
 				</div>

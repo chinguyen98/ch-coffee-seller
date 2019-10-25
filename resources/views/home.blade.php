@@ -10,6 +10,7 @@
 					<span class="subheading aquarelleFont">Welcome</span>
 					<h1 class="mb-4">Website Coffee số 1 Việt Nam</h1>
 					<p class="mb-4 mb-md-5 slogan">Thêm chút đường cho cà phê ngọt <br /> Thêm chút tình mình có thuộc về nhau?</p>
+					<p><a href="/coffees" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">XEM SẢN PHẨM</a></p>
 				</div>
 
 			</div>
@@ -25,6 +26,7 @@
 					<span class="subheading aquarelleFont">Welcome</span>
 					<h1 class="mb-4">Cà phê của giàu có <br /> và hạnh phúc</h1>
 					<p class="mb-4 mb-md-5 slogan">Thêm chút đường cho cà phê ngọt <br /> Thêm chút tình mình có thuộc về nhau?</p>
+					<p><a href="/coffees" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">XEM SẢN PHẨM</a></p>
 				</div>
 
 			</div>
@@ -40,6 +42,7 @@
 					<span class="subheading aquarelleFont">Welcome</span>
 					<h1 class="mb-4">Niềm cảm hứng bất tận</h1>
 					<p class="mb-4 mb-md-5 slogan">Thêm chút đường cho cà phê ngọt <br /> Thêm chút tình mình có thuộc về nhau?</p>
+					<p><a href="/coffees" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">XEM SẢN PHẨM</a></p>
 				</div>
 			</div>
 		</div>
@@ -147,7 +150,7 @@
 							thoang thoảng trong kí ức bao trùm cả không gian những mùi vị của yêu thương.
 						</p>
 					</div>
-					<p><a href="#" style="width:110%" class="btn btn-lg btn-primary btn-outline-primary px-4 py-3">KHÁM PHÁ</a></p>
+					<p><a href="/coffees" style="width:110%" class="btn btn-lg btn-primary btn-outline-primary px-4 py-3">KHÁM PHÁ</a></p>
 				</div>
 			</div>
 			<div class="col-md-6">

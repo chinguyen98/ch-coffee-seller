@@ -13,6 +13,10 @@
 
 Route::get('/', 'HomeController@index');
 
-Route::resource('coffee', 'CoffeesController');
+Route::resource('coffees', 'CoffeesController');
 
 Route::resource('intros', 'IntrosController');
+
+Route::resource('news', 'NewsController');
+
+Route::resource('contacts', 'ContactsController');

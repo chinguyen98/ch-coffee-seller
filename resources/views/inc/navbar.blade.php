@@ -8,9 +8,9 @@
       <ul class="navbar-nav ml-auto">
         <li class="nav-item {{$homeactive ?? ""}}"><a href="/" class="nav-link">Trang chủ</a></li>
         <li class="nav-item {{$introactive ?? ""}}"><a href="/intros" class="nav-link">Giới thiệu</a></li>
-        <li class="nav-item {{$coffeeactive ?? ""}}"><a href="menu.html" class="nav-link">Sản phẩm</a></li>
-        <li class="nav-item {{$newsactive ?? ""}}"><a href="blog.html" class="nav-link">Tin tức</a></li>
-        <li class="nav-item {{$contactactive ?? ""}}"><a href="about.html" class="nav-link">Liên hệ</a></li>
+        <li class="nav-item {{$coffeeactive ?? ""}}"><a href="/coffees" class="nav-link">Sản phẩm</a></li>
+        <li class="nav-item {{$newsactive ?? ""}}"><a href="/news" class="nav-link">Tin tức</a></li>
+        <li class="nav-item {{$contactactive ?? ""}}"><a href="/contacts" class="nav-link">Liên hệ</a></li>
         <li class="nav-item {{$accountactive ?? ""}}"><a href="about.html" class="nav-link">Tài khoản</a></li>
         <li class="nav-item cart"><a href="cart.html" class="nav-link"><span class="icon icon-shopping_cart"></span><span class="bag d-flex justify-content-center align-items-center"><small>0</small></span></a></li>
       </ul>
