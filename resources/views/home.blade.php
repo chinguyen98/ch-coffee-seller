@@ -1,5 +1,7 @@
 @extends('layouts/app')
 
+
+
 <section class="home-slider owl-carousel">
 	<div class="slider-item" style="background-image: url(images/bg_1.jpg);">
 		<div class="overlay"></div>
@@ -336,130 +338,100 @@
 				<div class="row">
 					<div class="col-md-12 nav-link-wrap mb-5">
 						<div class="nav ftco-animate nav-pills justify-content-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-							<a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">CÀ PHÊ HÒA TAN G7 3IN1 </a>
+							@isset($brands)
 
-							<a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Drinks</a>
+							@foreach($brands as $key => $brand)
 
-							<a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Desserts</a>
+							@if($key===0)
+
+							<a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">{{$brand->name}}</a>
+
+							@else
+
+							<a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">{{$brand->name}}</a>
+
+							@endif
+
+							@endforeach
+
+							@endisset
 						</div>
 					</div>
 					<div class="col-md-12 d-flex align-items-center">
 
 						<div class="tab-content ftco-animate" id="v-pills-tabContent">
 
-							<div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
+							@isset($brands)
+
+							@foreach($brands as $key => $brand)
+
+							@if($key===0)
+
+							<div class="tab-pane fade show active" id="v-pills-{{$key+1}}" role="tabpanel" aria-labelledby="v-pills-{{$key+1}}-tab">
 								<div class="row">
+
+									@foreach($brand->coffees as $k=>$coffee)
+
+									@if($k===9)
+
+									@break
+
+									@else
+
 									<div class="col-md-4 text-center">
 										<div class="menu-wrap">
-											<a href="#" class="menu-img img mb-4" style="background-image: url(images/dish-1.jpg);"></a>
+											<a href="#" class="menu-img img mb-4" style="background-image: url(images/coffees/{{$coffee->image}});"></a>
 											<div class="text">
-												<h3><a href="#">Grilled Beef</a></h3>
-												<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-												<p class="price"><span>$2.90</span></p>
-												<p><a href="#" class="btn btn-primary btn-outline-primary">Add to cart</a></p>
+												<h3><a href="#">{{$coffee->name}}</a></h3>
+												<p class="price"><span>{{$coffee->price}} VND</span></p>
+												<p><a href="#" class="btn btn-primary btn-outline-primary">THÊM VÀO GIỎ</a></p>
 											</div>
 										</div>
 									</div>
-									<div class="col-md-4 text-center">
-										<div class="menu-wrap">
-											<a href="#" class="menu-img img mb-4" style="background-image: url(images/dish-2.jpg);"></a>
-											<div class="text">
-												<h3><a href="#">Grilled Beef</a></h3>
-												<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-												<p class="price"><span>$2.90</span></p>
-												<p><a href="#" class="btn btn-primary btn-outline-primary">Add to cart</a></p>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-4 text-center">
-										<div class="menu-wrap">
-											<a href="#" class="menu-img img mb-4" style="background-image: url(images/dish-3.jpg);"></a>
-											<div class="text">
-												<h3><a href="#">Grilled Beef</a></h3>
-												<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-												<p class="price"><span>$2.90</span></p>
-												<p><a href="#" class="btn btn-primary btn-outline-primary">Add to cart</a></p>
-											</div>
-										</div>
-									</div>
+
+									@endif
+
+									@endforeach
+
 								</div>
 							</div>
 
-							<div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
+							@else
+
+							<div class="tab-pane fade" id="v-pills-{{$key+1}}" role="tabpanel" aria-labelledby="v-pills-{{$key+1}}-tab">
 								<div class="row">
+
+									@foreach($brand->coffees as $k=>$coffee)
+
+									@if($k===9)
+
+									@break
+
+									@else
+
 									<div class="col-md-4 text-center">
 										<div class="menu-wrap">
-											<a href="#" class="menu-img img mb-4" style="background-image: url(images/drink-1.jpg);"></a>
+											<a href="#" class="menu-img img mb-4" style="background-image: url(images/coffees/{{$coffee->image}});"></a>
 											<div class="text">
-												<h3><a href="#">Lemonade Juice</a></h3>
-												<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-												<p class="price"><span>$2.90</span></p>
-												<p><a href="#" class="btn btn-primary btn-outline-primary">Add to cart</a></p>
+												<h3><a href="#">{{$coffee->name}}</a></h3>
+												<p class="price"><span>{{$coffee->price}} VND</span></p>
+												<p><a href="#" class="btn btn-primary btn-outline-primary">THÊM VÀO GIỎ</a></p>
 											</div>
 										</div>
 									</div>
-									<div class="col-md-4 text-center">
-										<div class="menu-wrap">
-											<a href="#" class="menu-img img mb-4" style="background-image: url(images/drink-2.jpg);"></a>
-											<div class="text">
-												<h3><a href="#">Pineapple Juice</a></h3>
-												<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-												<p class="price"><span>$2.90</span></p>
-												<p><a href="#" class="btn btn-primary btn-outline-primary">Add to cart</a></p>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-4 text-center">
-										<div class="menu-wrap">
-											<a href="#" class="menu-img img mb-4" style="background-image: url(images/drink-3.jpg);"></a>
-											<div class="text">
-												<h3><a href="#">Soda Drinks</a></h3>
-												<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-												<p class="price"><span>$2.90</span></p>
-												<p><a href="#" class="btn btn-primary btn-outline-primary">Add to cart</a></p>
-											</div>
-										</div>
-									</div>
+
+									@endif
+
+									@endforeach
+
 								</div>
 							</div>
 
-							<div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
-								<div class="row">
-									<div class="col-md-4 text-center">
-										<div class="menu-wrap">
-											<a href="#" class="menu-img img mb-4" style="background-image: url(images/dessert-1.jpg);"></a>
-											<div class="text">
-												<h3><a href="#">Hot Cake Honey</a></h3>
-												<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-												<p class="price"><span>$2.90</span></p>
-												<p><a href="#" class="btn btn-primary btn-outline-primary">Add to cart</a></p>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-4 text-center">
-										<div class="menu-wrap">
-											<a href="#" class="menu-img img mb-4" style="background-image: url(images/dessert-2.jpg);"></a>
-											<div class="text">
-												<h3><a href="#">Hot Cake Honey</a></h3>
-												<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-												<p class="price"><span>$2.90</span></p>
-												<p><a href="#" class="btn btn-primary btn-outline-primary">Add to cart</a></p>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-4 text-center">
-										<div class="menu-wrap">
-											<a href="#" class="menu-img img mb-4" style="background-image: url(images/dessert-3.jpg);"></a>
-											<div class="text">
-												<h3><a href="#">Hot Cake Honey</a></h3>
-												<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-												<p class="price"><span>$2.90</span></p>
-												<p><a href="#" class="btn btn-primary btn-outline-primary">Add to cart</a></p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
+							@endif
+
+							@endforeach
+
+							@endisset
 						</div>
 					</div>
 				</div>
@@ -632,4 +604,11 @@
 			</div>
 		</div>
 	</div>
+</section>
+
+<section class="ftco-section">
+	<h1>test</h1>
+	@isset($brands)
+	<h1>{{$brands}}</h1>
+	@endisset
 </section>
