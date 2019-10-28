@@ -9285,13 +9285,13 @@ textarea.form-control {
 /*Owner*/
 
 @font-face{
-  font-family: UTM Beautiful Caps;
-  src: url('fonts/owner/UTM Beautiful Caps.ttf');
+  font-family: UTMBeautifulCaps;
+  src: url('fonts/owner/UTMBeautifulCaps.ttf');
 }
 
 @font-face{
-  font-family: UTM Aquarelle;
-  src: url('fonts/owner/UTM Aquarelle.ttf');
+  font-family: UTMAquarelle;
+  src: url('fonts/owner/UTMAquarelle.ttf');
 }
 
 .slogan{
