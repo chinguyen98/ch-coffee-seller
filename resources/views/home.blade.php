@@ -344,11 +344,11 @@
 
 							@if($key===0)
 
-							<a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">{{$brand->name}}</a>
+							<a class="nav-link active" id="v-pills-{{$key+1}}-tab" data-toggle="pill" href="#v-pills-{{$key+1}}" role="tab" aria-controls="v-pills-{{$key+1}}" aria-selected="true">{{$brand->name}}</a>
 
 							@else
 
-							<a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">{{$brand->name}}</a>
+							<a class="nav-link" id="v-pills-{{$key+1}}-tab" data-toggle="pill" href="#v-pills-{{$key+1}}" role="tab" aria-controls="v-pills-{{$key+1}}" aria-selected="false">{{$brand->name}}</a>
 
 							@endif
 
@@ -357,7 +357,7 @@
 							@endisset
 						</div>
 					</div>
-					<div class="col-md-12 d-flex align-items-center">
+					<div class=" col-md-12 d-flex align-items-center">
 
 						<div class="tab-content ftco-animate" id="v-pills-tabContent">
 
@@ -372,7 +372,7 @@
 
 									@foreach($brand->coffees as $k=>$coffee)
 
-									@if($k===9)
+									@if($k===6)
 
 									@break
 
@@ -383,7 +383,7 @@
 											<a href="#" class="menu-img img mb-4" style="background-image: url(images/coffees/{{$coffee->image}});"></a>
 											<div class="text">
 												<h3><a href="#">{{$coffee->name}}</a></h3>
-												<p class="price"><span>{{$coffee->price}} VND</span></p>
+												<p class="price"><span>{{number_format($coffee->price)}} VND</span></p>
 												<p><a href="#" class="btn btn-primary btn-outline-primary">THÊM VÀO GIỎ</a></p>
 											</div>
 										</div>
@@ -414,7 +414,7 @@
 											<a href="#" class="menu-img img mb-4" style="background-image: url(images/coffees/{{$coffee->image}});"></a>
 											<div class="text">
 												<h3><a href="#">{{$coffee->name}}</a></h3>
-												<p class="price"><span>{{$coffee->price}} VND</span></p>
+												<p class="price"><span>{{number_format($coffee->price)}} VND</span></p>
 												<p><a href="#" class="btn btn-primary btn-outline-primary">THÊM VÀO GIỎ</a></p>
 											</div>
 										</div>
@@ -604,11 +604,4 @@
 			</div>
 		</div>
 	</div>
-</section>
-
-<section class="ftco-section">
-	<h1>test</h1>
-	@isset($brands)
-	<h1>{{$brands}}</h1>
-	@endisset
 </section>

@@ -8225,7 +8225,7 @@ h1, h2, h3, h4, h5,
     font-size: 18px;
     font-weight: 400; }
     .menu-wrap .text .price span {
-      color: #fff; }
+      color: #f00; }
 
 .ftco-appointment {
   width: 100%;
@@ -9308,3 +9308,50 @@ textarea.form-control {
   font-size: 30px !important;
 }
 
+.dmsp-container{
+  background-color: rgb(29, 28, 28);
+}
+
+.dmsp-container__btn{
+  width:100%;
+}
+
+#accordion *{
+  transition:0.5s all;
+}
+
+.lstdmsp{
+  background-color: rgb(105, 104, 104);
+}
+
+.lstdmsp .list-group a{
+  color:#FFF;
+  background-color: rgb(71, 69, 69);
+}
+
+.lstdmsp .list-group a:hover{
+  background-color: rgb(105, 104, 104);
+}
+
+.dmsp-main-container {
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+
+.dmsp-main-container h5{
+  color:white;
+  font-weight: 50;
+}
+
+.dmsp-main-container__item{
+  
+}
+
+.dmsp-main-container__item img{
+  widows: 12em;
+  height: 12em;
+}
+
+.dmsp-main-container__item span{
+  font-size:1.5em;
+  color:red;
+}

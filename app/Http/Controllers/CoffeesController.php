@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Brand;
+use App\CoffeeType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CoffeesController extends Controller
 {
@@ -11,9 +14,20 @@ class CoffeesController extends Controller
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function index()
+	public function index() //GET REQUEST
 	{
-		return view('coffees/index')->with(['title' => 'Giới thiệu', 'coffeeactive' => 'active']);
+		$brands = Brand::all();
+
+		$menu_types = CoffeeType::with('coffees')->get();
+
+		$coffee_types = array();
+
+		foreach ($brands as $brand) {
+			$type = DB::select('select distinct coffee_types.name from coffee_types join coffees on coffee_types.id=coffees.id_type join brands on brands.id=coffees.id_brand where coffees.id_brand= ?', [$brand->id]);
+			$coffee_types[$brand->id] = $type;
+		}
+
+		return view('coffees/index')->with(['title' => 'Sản phẩm', 'coffeeactive' => 'active', 'brands' => $brands, 'coffee_types' => $coffee_types, 'menu_types' => $menu_types]);
 	}
 
 	/**
