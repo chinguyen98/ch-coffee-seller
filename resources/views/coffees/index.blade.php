@@ -31,7 +31,7 @@
 						<div class="dmsp-container text-center card-header " id="{{$brand->id}}">
 							<h5 class="mb-0">
 								<button class="dmsp-container__btn btn btn-link collapsed" data-toggle="collapse" data-target="#collapse{{$brand->id}}" aria-expanded="false" aria-controls="collapseThree">
-									<h4>{{$brand->name}}</h4>
+									<img src="images/brands/{{$brand->image}}" alt="" srcset="">
 								</button>
 							</h5>
 						</div>

@@ -32,6 +32,11 @@
   width:100%;
 }
 
+.dmsp-container__btn img{
+  width: 12em;
+  height:8em;
+}
+
 #accordion *{
   transition:0.5s all;
 }
