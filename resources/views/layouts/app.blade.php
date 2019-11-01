@@ -29,6 +29,7 @@
 		<link rel="stylesheet" href="css/flaticon.css">
 		<link rel="stylesheet" href="css/icomoon.css">
 		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/owner.css">
 	</head>
 
 	<body>
@@ -39,12 +40,9 @@
 
 		@include('inc.footer')
 
-		<!-- loader -->
-		<div id="ftco-loader" class="show fullscreen">
-				<svg class="circular" width="48px" height="48px">
-				<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-				<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
-		</div>
+		@include('inc.loader')
+
+		@include('inc.findmodal')
 
 		<script src="js/jquery.min.js"></script>
 		<script src="js/jquery-migrate-3.0.1.min.js"></script>
@@ -61,7 +59,7 @@
 		<script src="js/jquery.timepicker.min.js"></script>
 		<script src="js/scrollax.min.js"></script>
 		<script src="js/main.js"></script>
-
+		<script src="js/findmodal.js"></script>
 	</body>
 
 	</html>

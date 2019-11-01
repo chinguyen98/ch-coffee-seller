@@ -37,6 +37,9 @@
 				<h5 class="pr-3">Đặc điểm: </h5><br>{{$coffee->specific}}
 			</p>
 			<p>
+				<h5 class="pr-3">Thành phần: </h5>{{$coffee->ingredient}}
+			</p>
+			<p>
 				<h5 class="pr-3">Hạn sử dụng: </h5>{{$coffee->expired}} tháng
 			</p>
 			<p>
@@ -76,8 +79,6 @@
 		<p class="mx-5">{{$coffee->info}}</p>
 	</div>
 </div>
-
-
 
 <script src="{{asset('js/owner.js') }}">
 </script>
