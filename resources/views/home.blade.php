@@ -380,9 +380,9 @@
 
 									<div class="col-md-4 text-center">
 										<div class="menu-wrap">
-											<a href="#" class="menu-img img mb-4" style="background-image: url(images/coffees/{{$coffee->image}});"></a>
+											<a href="/coffees/{{$coffee->id}}" class="menu-img img mb-4" style="background-image: url(images/coffees/{{$coffee->image}});"></a>
 											<div class="text">
-												<h3><a href="#">{{$coffee->name}}</a></h3>
+												<h3><a href="/coffees/{{$coffee->id}}">{{$coffee->name}}</a></h3>
 												<p class="price"><span>{{number_format($coffee->price)}} VND</span></p>
 												<p><a href="#" class="btn btn-primary btn-outline-primary">THÊM VÀO GIỎ</a></p>
 											</div>
@@ -537,68 +537,6 @@
 							<img src="images/person_5.jpg" alt="">
 						</div>
 						<div class="name align-self-center">Tài Nguyễn<span class="position">Chủ quán cà phê TaiNguyen</span></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
-<section class="ftco-section">
-	<div class="container">
-		<div class="row justify-content-center mb-5 pb-3">
-			<div class="col-md-7 heading-section ftco-animate text-center">
-				<h2 class="mb-4">Tin tức</h2>
-				<div class="slogan sloganknst">
-					<p>Tách cà phê buổi sáng mang một niềm hứng khởi và sức mạnh mà tách trà buổi chiều
-						hay buổi tối không thể nào mang được lại như thế.
-					</p>
-				</div>
-			</div>
-		</div>
-		<div class="row d-flex">
-			<div class="col-md-4 d-flex ftco-animate">
-				<div class="blog-entry align-self-stretch">
-					<a href="blog-single.html" class="block-20" style="background-image: url('images/image_1.jpg');">
-					</a>
-					<div class="text py-4 d-block">
-						<div class="meta">
-							<div><a href="#">Sept 10, 2018</a></div>
-							<div><a href="#">Admin</a></div>
-							<div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-						</div>
-						<h3 class="heading mt-2"><a href="#">The Delicious Pizza</a></h3>
-						<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4 d-flex ftco-animate">
-				<div class="blog-entry align-self-stretch">
-					<a href="blog-single.html" class="block-20" style="background-image: url('images/image_2.jpg');">
-					</a>
-					<div class="text py-4 d-block">
-						<div class="meta">
-							<div><a href="#">Sept 10, 2018</a></div>
-							<div><a href="#">Admin</a></div>
-							<div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-						</div>
-						<h3 class="heading mt-2"><a href="#">The Delicious Pizza</a></h3>
-						<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4 d-flex ftco-animate">
-				<div class="blog-entry align-self-stretch">
-					<a href="blog-single.html" class="block-20" style="background-image: url('images/image_3.jpg');">
-					</a>
-					<div class="text py-4 d-block">
-						<div class="meta">
-							<div><a href="#">Sept 10, 2018</a></div>
-							<div><a href="#">Admin</a></div>
-							<div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-						</div>
-						<h3 class="heading mt-2"><a href="#">The Delicious Pizza</a></h3>
-						<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
 					</div>
 				</div>
 			</div>

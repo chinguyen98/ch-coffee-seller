@@ -7629,7 +7629,7 @@ h1, h2, h3, h4, h5,
             list-style: none; }
         .owl-carousel.home-slider .slider-item .slider-text .breadcrumbs {
           text-transform: uppercase;
-          font-size: 13px;
+          font-size: 20px;
           letter-spacing: 1px; }
           .owl-carousel.home-slider .slider-item .slider-text .breadcrumbs span {
             border-bottom: 2px solid rgba(255, 255, 255, 0.1); }
@@ -9342,8 +9342,25 @@ textarea.form-control {
   font-weight: 50;
 }
 
-.dmsp-main-container__item{
-  
+.dmsp-main-container__name{
+  width:fit-content + 1em;
+  height:fit-content +1em;
+  background-color: rgba(0, 0, 0,0.3) !important;
+  padding:0.5em;
+  transition: 0.5s all;
+}
+
+.dmsp-main-container__name h2{
+  transition: 0.5s all;
+  text-transform: uppercase;
+}
+
+.dmsp-main-container__name:hover{
+  background-color: rgba(0, 0, 0) !important;
+}
+
+.dmsp-main-container__name:hover h2{
+  color:red;
 }
 
 .dmsp-main-container__item img{
@@ -9354,4 +9371,65 @@ textarea.form-control {
 .dmsp-main-container__item span{
   font-size:1.5em;
   color:red;
+}
+
+
+.main_coffee_detail > div{
+  /*background-color: rgba(255, 255, 255, 0.4);*/
+  border:0.5em inset gray;
+}
+
+.main_coffee_detail h5{
+  display:inline;
+}
+
+.main_coffee_detail input[type="text"]{
+  width:4em;
+  text-align:center;
+}
+
+.main_coffee_detail .quantity-updown{
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding-top:0.5em;
+  margin: 0 1em;
+  border-radius: 50%;
+  border:0.1em solid;
+  width:3em;
+  height:3em;
+  user-select: none;
+}
+
+.main_coffee_detail .quantity-updown:hover{
+  background-color: rgba(0, 0, 0, 1);
+  cursor:pointer;
+}
+
+.main_coffee_detail:first-child img{
+  width: 100%;
+  height: 75%;
+}
+
+.main_coffee_detail .price-container .price-container__label{
+  color:red;
+  font-size:2em;
+}
+
+.main_coffee_detail .price-container .price-container__price{
+  color:red;
+  font-size:3em;
+}
+
+.relatedCoffee-container__item img{
+  width:6em !important;
+  height:6em !important;
+}
+
+.relatedCoffee-container__item p{
+  color:red;
+}
+
+.main_coffee_info p{
+  font-size:1.5em;
+  text-align: justify;
 }

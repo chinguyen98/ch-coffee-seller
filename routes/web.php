@@ -13,6 +13,10 @@
 
 Route::get('/', 'HomeController@index');
 
+Route::get('/brandandtype', 'CoffeesController@getCoffeesByBrandAndType');
+
+Route::get('/coffeesbytype', 'CoffeesController@getCoffeesByType');
+
 Route::resource('coffees', 'CoffeesController');
 
 Route::resource('intros', 'IntrosController');

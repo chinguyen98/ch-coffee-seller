@@ -7,7 +7,7 @@
 			<div class="row slider-text justify-content-center align-items-center">
 				<div class="col-md-7 col-sm-12 text-center ftco-animate">
 					<h1 class="mb-3 mt-5 bread">Sản phẩm</h1>
-					<p class="breadcrumbs"><span class="mr-2"><a href="/">Trang chủ</a></span> <span>Sản phẩm</span></p>
+					<p class="breadcrumbs"><span class="mr-2"><a href="/">Trang chủ</a></span>&nbsp; / &nbsp; <span>Sản phẩm</span></p>
 				</div>
 			</div>
 		</div>
@@ -42,7 +42,7 @@
 
 										@foreach($coffee_types[$brand->id] as $coffee_type)
 
-										<a href="#" class="list-group-item list-group-item-action">
+										<a href="/brandandtype?brand={{$brand->id}}&type={{$coffee_type->id}}" class="list-group-item list-group-item-action">
 											<p>{{$coffee_type->name}}</p>
 										</a>
 
@@ -76,9 +76,11 @@
 
 		@foreach($menu_types as $type)
 		<div class="dmsp-main-container mt-3">
-			<a href="#">
-				<h1>{{$type->name}}</h1>
-			</a>
+			<div class="dmsp-main-container__name">
+				<a href="/coffeesbytype?type={{$type->id}}">
+					<h2>{{$type->name}}</h2>
+				</a>
+			</div>
 			<div class="pt-3 dmsp-main-container__list d-lg-flex flex-wrap">
 				@foreach($type->coffees as $key=>$coffee)
 
@@ -89,9 +91,12 @@
 				@else
 
 				<div class="dmsp-main-container__item col-sm-12 col col-md-3 pt-3 text-center  d-sm-flex d-lg-flex flex-column justify-content-center align-items-center">
-					<a href="http://"><img src="images/coffees/{{$coffee->image}}" alt=""></a>
-					<a href="#"><h5 class="mt-3">{{$coffee->name}}</h5></a>
+					<a href="/coffees/{{$coffee->id}}"><img src="images/coffees/{{$coffee->image}}" alt=""></a>
+					<a href="/coffees/{{$coffee->id}}">
+						<h5 class="mt-3">{{$coffee->name}}</h5>
+					</a>
 					<span>{{number_format($coffee->price)}} VND</span>
+					<p><a href="#" class="btn btn-primary btn-outline-primary">THÊM VÀO GIỎ</a></p>
 				</div>
 
 				@endif
