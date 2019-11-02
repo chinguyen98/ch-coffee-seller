@@ -173,13 +173,14 @@
   top:12%;
 	left:0;
 	transform: translateY(30rem);
-	transition: all 0.5s;
-	z-index: 696969;
+  transition: all 0.5s;
+	z-index: -696969;
 }
 
 .active-modal{
-	opacity: 0.9;
-	transform: none;
+	opacity: 0.95;
+  transform: none;
+  z-index: 696969;
 }
 
 .find-model__close{
@@ -210,4 +211,19 @@
   height: 0.05em;
   margin-left: 2em;
   margin-right: 2em;
+}
+
+.matchCoffees{
+  width: 100%;
+  height: 70%;
+  overflow: auto;
+}
+
+.matchCoffees img{
+  width: 10em;
+  height: 10em;
+}
+
+.matchCoffees p{
+  color:red;
 }
