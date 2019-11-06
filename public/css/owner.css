@@ -227,3 +227,12 @@
 .matchCoffees p{
   color:red;
 }
+
+.menu_account_container .dropdown-menu{
+  margin: -1.2rem;
+  
+}
+
+.menu_account_container .dropdown-menu a{
+  font-size: 1rem !important;
+}

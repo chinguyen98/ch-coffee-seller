@@ -10,7 +10,13 @@
         <li class="nav-item {{$introactive ?? ""}}"><a href="/intros" class="nav-link">Giới thiệu</a></li>
         <li class="nav-item {{$coffeeactive ?? ""}}"><a href="/coffees" class="nav-link">Sản phẩm</a></li>
         <li class="nav-item {{$newsactive ?? ""}}"><a href="/news" class="nav-link">Tin tức</a></li>
-        <li class="nav-item {{$accountactive ?? ""}}"><a href="about.html" class="nav-link">Tài khoản</a></li>
+        <li class="menu_account_container nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="room.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tài khoản</a>
+          <div class="dropdown-menu" aria-labelledby="dropdown04">
+            <a class="dropdown-item" href="shop.html">Đăng nhập</a>
+            <a class="dropdown-item" href="product-single.html">Tạo tài khoản</a>
+          </div>
+        </li>
         <li class="nav-item"><a class="nav-link"><i id="btn-find" class="fas fa-search fa-2x"></i></a></li>
         <li class="nav-item cart"><a href="cart.html" class="nav-link"><span class="icon icon-shopping_cart"></span><span class="bag d-flex justify-content-center align-items-center"><small>0</small></span></a></li>
       </ul>
