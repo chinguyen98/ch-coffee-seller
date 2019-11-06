@@ -17,10 +17,12 @@ class CreateCustomersTable extends Migration
             $table->bigIncrements('id');
             $table->string('email')->unique();
             $table->string('username')->unique();
-            $table->string('password', 3000);
+            $table->string('password');
             $table->string('display_name');
             $table->string('address', 1000);
             $table->string('phone_number', 20);
+            $table->timestamp('email_verified_at')->nullable();
+            $table->rememberToken();
             $table->timestamps();
         });
     }
