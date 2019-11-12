@@ -24,3 +24,7 @@ Route::resource('intros', 'IntrosController');
 Route::resource('news', 'NewsController');
 
 Route::resource('contacts', 'ContactsController');
+
+Auth::routes();
+
+Route::get('/home', 'AuthforCustomer\HomeController@index')->name('home');

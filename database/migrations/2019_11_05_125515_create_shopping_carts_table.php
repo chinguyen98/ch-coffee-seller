@@ -14,13 +14,13 @@ class CreateShoppingCartsTable extends Migration
     public function up()
     {
         Schema::create('shopping_carts', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->integer('quantity');
             $table->integer('price');
-            $table->bigInteger('id_coffee')->unsigned();
-            $table->bigInteger('id_customer')->unsigned();
-            $table->foreign('id_coffee')->references('id')->on('coffees')->onDelete('cascade');
-            $table->foreign('id_customer')->references('id')->on('customers')->onDelete('cascade');
+            $table->integer('id_coffee')->unsigned();
+            $table->integer('id_customer')->unsigned();
+            $table->foreign('id_coffee')->references('id')->on('coffees')->onDelete('RESTRICT');
+            $table->foreign('id_customer')->references('id')->on('customers')->onDelete('RESTRICT');
             $table->timestamps();
         });
     }

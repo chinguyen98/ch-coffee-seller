@@ -14,14 +14,15 @@ class CreateOrdersTable extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('status');
-            $table->bigInteger('id_customer')->unsigned();
-            $table->bigInteger('id_admin')->unsigned();
-            $table->bigInteger('id_shiping_info')->unsigned();
-            $table->foreign('id_customer')->references('id')->on('customers')->onDelete('cascade');
-            $table->foreign('id_admin')->references('id')->on('admins')->onDelete('cascade');
-            $table->foreign('id_shiping_info')->references('id')->on('shipping_infos')->onDelete('cascade');
+            $table->increments('id');
+            $table->integer('id_customer')->unsigned();
+            $table->integer('id_admin')->unsigned();
+            $table->integer('id_shiping_info')->unsigned();
+            $table->integer('id_status')->unsigned();
+            $table->foreign('id_customer')->references('id')->on('customers')->onDelete('RESTRICT');
+            $table->foreign('id_admin')->references('id')->on('admins')->onDelete('RESTRICT');
+            $table->foreign('id_shiping_info')->references('id')->on('shipping_infos')->onDelete('RESTRICT');
+            $table->foreign('id_status')->references('id')->on('status')->onDelete('RESTRICT');
             $table->timestamps();
         });
     }

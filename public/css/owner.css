@@ -229,10 +229,21 @@
 }
 
 .menu_account_container .dropdown-menu{
-  margin: -1.2rem;
-  
+  position: absolute;
+  top: 3rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
 }
 
 .menu_account_container .dropdown-menu a{
   font-size: 1rem !important;
+}
+
+/*Register Form*/
+.register-form{
+  color: whitesmoke;
+  background-color: rgba(0, 0, 0, 0.3);
+  font-size: 1.2em;
 }
