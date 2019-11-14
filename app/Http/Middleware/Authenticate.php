@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use Symfony\Component\Routing\Route;
 
 class Authenticate extends Middleware
 {
@@ -14,7 +15,10 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
-        if (! $request->expectsJson()) {
+        if (!$request->expectsJson()) {
+            if ($request->is('admins/*')) {
+                return route('admin.login');
+            }
             return route('login');
         }
     }
