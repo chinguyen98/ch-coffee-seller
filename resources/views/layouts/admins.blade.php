@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>QUẢN TRỊ</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -43,14 +43,7 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admins/login">Đăng nhập</a>
-                        </li>
-                        @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admins/register">Đăng ký</a>
-                        </li>
-                        @endif
+                    
                         @else
                         <li class="nav-item">
                             <a class="nav-link" href="/admins/home">{{Auth::user()->name}}</a>

@@ -13,6 +13,9 @@ class Admin extends Authenticatable
 
     protected $guard = 'admin';
 
+    const SUPER_ADMIN = 1;
+    const STAFF_ADMIN = 0;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -39,4 +42,9 @@ class Admin extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function isSuperAdmin()
+    {
+        return $this->role === self::SUPER_ADMIN;
+    }
 }

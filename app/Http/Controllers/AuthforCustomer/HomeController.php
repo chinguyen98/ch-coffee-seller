@@ -24,6 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('customers/home')->with(['title' => 'Đăng ký']);
+        return view('customers/home')->with(['title' => 'Tài khoản']);
     }
 }
