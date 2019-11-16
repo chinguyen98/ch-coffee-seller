@@ -23,7 +23,6 @@ Route::resource('intros', 'IntrosController');
 
 Route::resource('news', 'NewsController');
 
-
 Route::resource('contacts', 'ContactsController');
 
 Auth::routes();
@@ -41,3 +40,7 @@ Route::post('/admins/login', 'Admin\Auth\LoginController@login')->name('admin.lo
 Route::post('/admins/logout', 'Admin\Auth\LoginController@logout');
 
 Route::get('/admins/home', 'Admin\AdminsController@index')->name('admin.home');
+
+Route::group(['prefix' => 'admins/staffs', 'middleware' => ['isSuperAdmin', 'auth:admin']], function () {
+    Route::get('/', 'Admin\StaffManagerController@index');
+});
