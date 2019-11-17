@@ -247,3 +247,54 @@
   background-color: rgba(0, 0, 0, 0.3);
   font-size: 1.2em;
 }
+
+/*Page gioi thieu*/
+
+.slogan{
+  font-family: UTM Beautiful Caps;
+  font-size: 40px !important;
+}
+.slogan-info{
+  font-family: UTM Beautiful Caps;
+  font-size: 35px !important;
+  color: wheat;
+}
+#contact {
+  padding-left: 16.8rem;
+}
+
+/*Page tin tuc*/
+.newsimage {
+  width: 20rem !important;
+  padding-left: 3em;
+  padding-bottom: 3em;
+}
+
+.img-news{
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.new-ct p{
+  color:burlywood;
+  text-align: justify;
+  font-size: 0.7em;
+  padding-left: 3em;
+  padding-right: 3em;
+}
+.new-ct h1{
+  color: wheat;
+  padding-left: 2em;
+}
+.new-ct i{
+  font-size: 0.6em;
+}
+
+.review-news {
+  color:wheat;
+  font-size: 1.3em;
+  font-family: 'Times New Roman', Times, serif;
+}
+.new-ft {
+  padding-left: 25em;
+}

@@ -25,7 +25,7 @@
     </div>
 </div>
 <div class=" col col-md-12 d-flex flex-wrap text-center mt-4">
-    <a class="nav-link col col-md-6" href="#">
+    <a class="nav-link col col-md-6" href="/admins/coffees">
         <h3>Quản lý sản phẩm</h3>
     </a>
     <a class="nav-link col col-md-6" href="#">

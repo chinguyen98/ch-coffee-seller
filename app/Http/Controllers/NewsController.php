@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class NewsController extends Controller
 {
@@ -13,7 +14,8 @@ class NewsController extends Controller
      */
     public function index()
     {
-        return view('news/index')->with(['title'=>'Giới thiệu','newsactive'=>'active']);;
+        $news=DB::table('news')->get();//vong lap
+        return view('news/index')->with(['title'=>'Tin Tức','newsactive'=>'active', 'qe'=>$news]);
     }
 
     /**
@@ -45,7 +47,8 @@ class NewsController extends Controller
      */
     public function show($id)
     {
-        //
+       $new=DB::table('news')->where('id',$id)->first();
+       return view('news/news')->with(['title'=>'Tin Tức','newsactive'=>'active', 'new'=>$new]);
     }
 
     /**
