@@ -14,9 +14,9 @@
                     </div>
                     @endif
                     @if(Auth::user()->isSuperAdmin())
-                    Chào mừng ông trùm website CH_Coffee!!!!!
+                    Chào mừng SUPER ADMIN website CH_Coffee!!!!!
                     @else
-                    Xin chào nhân viên quèn {{Auth::user()->name}} !
+                    Xin chào ADMIN {{Auth::user()->name}} !
                     @endif
 
                 </div>

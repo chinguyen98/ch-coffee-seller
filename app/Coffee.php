@@ -10,4 +10,14 @@ class Coffee extends Model
     {
         return $this->belongsTo('App\Brand');
     }
+
+    public function coffee_type()
+    {
+        return $this->belongsTo('App\CoffeeType');
+    }
+
+    public function unit()
+    {
+        return $this->belongsTo('App\Unit');
+    }
 }

@@ -21,7 +21,7 @@
         <tbody id="coffees-container">
             @foreach($coffees as $coffee)
             <tr>
-                <th scope="row">{{$loop->index+1}}</th>
+                <th scope="row">{{$coffee->id}}</th>
                 <td>{{$coffee->name}}</td>
                 <td>
                     <div>

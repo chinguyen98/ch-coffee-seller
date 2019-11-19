@@ -298,3 +298,46 @@
 .new-ft {
   padding-left: 25em;
 }
+
+/*Popup flash Message*/
+
+.popup-flash-mess{
+  width: 30rem;
+  height: 5rem;
+  background-color: rgb(47, 233, 47);
+  position: fixed;
+  z-index: 9999;
+  margin-left: 35%;
+  transform: translateY(-8em);
+  opacity: 0;
+  animation-name: showPopUpFlashMessage;
+  animation-iteration-count: 2;
+  animation-direction: alternate;
+  animation-duration: 2s;
+}
+
+@keyframes showPopUpFlashMessage{
+  0%  {
+    transform: translateY(-8em);
+    opacity: 0;
+  }
+  50%{
+    transform: translateY(-4em);
+    opacity: 1;
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(-4.5em);
+  }
+}
+
+/*Coffee Management*/
+
+.coffee-manage-image-container img{
+  width: 10rem !important;
+  height: 10rem !important;
+}
+
+#txt_info{
+  height: 15rem;
+}

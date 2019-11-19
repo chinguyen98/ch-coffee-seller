@@ -42,6 +42,7 @@ Route::get('/admins/home', 'Admin\AdminsController@index')->name('admin.home');
 Route::group(['prefix' => 'admins/coffees', 'middleware' => ['auth:admin']], function () {
     Route::get('/', 'Admin\CoffeesManagerController@index');
     Route::get('/{id}', 'Admin\CoffeesManagerController@show');
+    Route::put('/{id}', 'Admin\CoffeesManagerController@update');
 });
 
 Route::group(['prefix' => 'admins/staffs', 'middleware' => ['isSuperAdmin', 'auth:admin']], function () {
