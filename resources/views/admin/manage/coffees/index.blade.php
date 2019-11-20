@@ -9,7 +9,7 @@
         </div>
         <input id="coffee-name" name="name" type="text" aria-label="First name" class="form-control" placeholder="Nhập tên sản phẩm tại đây">
     </div>
-    <a class="btn btn-primary" href="#">Thêm sản phẩm</a>
+    <a class="btn btn-primary" href="/admins/coffees/create">Thêm sản phẩm</a>
     <table class="table mt-4">
         <thead class="thead-light">
             <tr>

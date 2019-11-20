@@ -2,7 +2,6 @@
 
 @section('content')
 
-
 @if ( Session::has('flash_message') )
 
 <div class="text-center popup-flash-mess">
@@ -13,25 +12,18 @@
 @endif
 
 <div class="col col-md-12 text-center">
-    <h1>Chi tiết sản phẩm</h1>
+    <h1>Thêm sản phẩm</h1>
     <div class="container mt-4">
-        <form action="/admins/coffees/{{$coffee->id}}" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
+        <form action="/admins/coffees" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
             @csrf
-            @method('PUT')
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="id">Mã sản phẩm</span>
-                </div>
-                <input type="text" value="{{$coffee->id}}" class="form-control" aria-label="id" aria-describedby="name" disabled>
-            </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="name">Tên sản phẩm</span>
                 </div>
-                <input name="name" type="text" value="{{$coffee->name}}" class="form-control" placeholder="Nhập tên sản phẩm" aria-label="name" aria-describedby="name" required>
+                <input name="name" type="text" class="form-control" placeholder="Nhập tên sản phẩm" aria-label="name" aria-describedby="name" required>
             </div>
             <div class="coffee-manage-image-container col col-md-12 mb-3 d-flex flex-column justify-content-center align-items-center">
-                <img id="previewImg" src="{{asset('images/coffees/' . $coffee->image)}}" alt="Responsive image">
+                <img id="previewImg" src="{{asset('images/coffees/temp.jpg')}}" alt="Chưa tải hình lên">
                 <div class="input-group my-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text">Ảnh đại diện sản phẩm</span>
@@ -41,45 +33,45 @@
                         <label class="custom-file-label" for="inputGroupFile01">Nhấn để chọn upload hình</label>
                     </div>
                 </div>
+                <h3 class="valid-err" id="image-err"></h3>
             </div>
-            <input name="oldImage" type="hidden" value="{{$coffee->image}}">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="price">Giá</span>
                 </div>
-                <input name="price" type="text" value="{{$coffee->price}}" class="form-control" placeholder="Nhập giá sản phẩm" aria-label="price" aria-describedby="price" required>
+                <input name="price" type="text" class="form-control" placeholder="Nhập giá sản phẩm" aria-label="price" aria-describedby="price" required>
                 <h1 class="valid-err" id="price-err"></h1>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="info">Thông tin</span>
                 </div>
-                <textarea class="col col-md-12" name="info" id="txt_info" required>{{$coffee->info}}</textarea>
+                <textarea class="col col-md-12" name="info" id="txt_info" required></textarea>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="specific">Đặc trưng</span>
                 </div>
-                <input name="specific" type="text" value="{{$coffee->specific}}" class="form-control" placeholder="Nhập đặc trưng của sản phẩm" aria-label="specific" aria-describedby="specific" required>
+                <input name="specific" type="text" class="form-control" placeholder="Nhập đặc trưng của sản phẩm" aria-label="specific" aria-describedby="specific" required>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="ingredient">Nguyên liệu</span>
                 </div>
-                <input name="ingredient" type="text" value="{{$coffee->ingredient}}" class="form-control" placeholder="Nhập nguyên liệu" aria-label="ingredient" aria-describedby="ingredient" required>
+                <input name="ingredient" type="text" class="form-control" placeholder="Nhập nguyên liệu" aria-label="ingredient" aria-describedby="ingredient" required>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="ingredient">Hạn sử dụng (tháng)</span>
                 </div>
-                <input name="expired" type="text" value="{{$coffee->expired}}" class="form-control" placeholder="Nhập hạn sử dụng" aria-label="ingredient" aria-describedby="ingredient" required>
+                <input name="expired" type="text" class="form-control" placeholder="Nhập hạn sử dụng" aria-label="ingredient" aria-describedby="ingredient" required>
                 <h3 class="valid-err" id="expired-err"></h3>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="price">Trọng lượng</span>
                 </div>
-                <input name="capacity" type="text" value="{{$coffee->capacity}}" class="form-control" placeholder="Nhập giá sản phẩm" aria-label="price" aria-describedby="price" required>
+                <input name="capacity" type="text" class="form-control" placeholder="Nhập giá sản phẩm" aria-label="price" aria-describedby="price" required>
                 <h3 class="valid-err" id="capacity-err"></h3>
             </div>
             <div class="input-group mb-3">
@@ -89,15 +81,7 @@
                 <select class="custom-select" name="id_unit" id="unit">
                     @foreach ($units as $unit)
 
-                    @if ($unit->id==$coffee->id_unit)
-
-                    <option value="{{$unit->id}}" selected>{{$unit->name}} ({{$unit->dram}})</option>
-
-                    @else
-
                     <option value="{{$unit->id}}">{{$unit->name}} ({{$unit->dram}})</option>
-
-                    @endif
 
                     @endforeach
                 </select>
@@ -110,15 +94,7 @@
                 <select class="custom-select" name="id_brand" id="unit">
                     @foreach ($brands as $brand)
 
-                    @if ($brand->id==$coffee->id_brand)
-
-                    <option value="{{$brand->id}}" selected>{{$brand->name}}</option>
-
-                    @else
-
                     <option value="{{$brand->id}}">{{$brand->name}}</option>
-
-                    @endif
 
                     @endforeach
                 </select>
@@ -130,30 +106,24 @@
                 <select class="custom-select" name="id_type" id="type">
                     @foreach ($coffee_types as $coffee_type)
 
-                    @if ($coffee_type->id==$coffee->id_type)
-
-                    <option value="{{$coffee_type->id}}" selected>{{$coffee_type->name}}</option>
-
-                    @else
-
                     <option value="{{$coffee_type->id}}">{{$coffee_type->name}}</option>
-
-                    @endif
 
                     @endforeach
                 </select>
             </div>
-            <input class="btn btn-primary" type="submit" value="Cập nhật">
+            <input class="btn btn-primary" type="submit" value="Thêm sản phẩm">
         </form>
     </div>
 </div>
 
+<script src="{{asset('js/validCoffeeSubmit.js')}}"></script>
 <script>
     const name = document.querySelector('input[name=name]');
     const price = document.querySelector('input[name=price]');
     const ingredient = document.querySelector('input[name=ingredient]');
     const expired = document.querySelector('input[name=expired]');
     const capacity = document.querySelector('input[name=capacity]');
+    const image = document.querySelector('input[name=image]');
     const info = document.querySelector('textarea');
     const validErrs = document.querySelectorAll('.valid-err');
 
@@ -180,6 +150,12 @@
                 'value': 'Vui lòng nhập đúng định dạng hạn sử dụng! (Vd: 12)'
             });
         }
+        if (image.value == "") {
+            errors.push({
+                'id': 'image-err',
+                'value': 'Vui lòng upload hình!'
+            });
+        }
         if (errors.length > 0) {
             alert("Có lỗi khi nhập liệu. Vui lòng kiểm tra lại!");
             errors.forEach(err => {
@@ -192,5 +168,6 @@
     }
 </script>
 <script src="{{asset('js/changePreviewImage.js')}}"></script>
+
 
 @endsection
