@@ -53,7 +53,17 @@
 				<span id="btn-quantity-insc" class="quantity-updown text-center">+</span>
 			</div>
 			<br>
+
+			@guest
+
+			<p><a id="btnAddToCart" class="btn btn-lg btn-primary btn-outline-primary">THÊM VÀO GIỎ</a></p>
+
+			@else
+
 			<p><a href="#" class="btn btn-lg btn-primary btn-outline-primary">THÊM VÀO GIỎ</a></p>
+
+			@endguest
+
 		</div>
 		<div class="col col-sm-6 col-lg-4">
 			<h3 class="py-3 text-center">Sản phẩm {{$brand->name}} khác</h3>
@@ -80,5 +90,18 @@
 	</div>
 </div>
 
-<script src="{{asset('js/owner.js') }}">
+<script src="{{asset('js/owner.js') }}"></script>
+
+@guest
+
+<script>
+	const btnAddToCart = document.querySelector('#btnAddToCart');
+
+	function addToCart(e) {
+		alert("Da them");
+	}
+
+	btnAddToCart.addEventListener('click', addToCart);
 </script>
+
+@endguest

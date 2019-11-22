@@ -143,8 +143,16 @@
                     @endforeach
                 </select>
             </div>
-            <input class="btn btn-primary" type="submit" value="Cập nhật">
+            <input class="btn btn-primary" type="submit" value="CẬP NHẬT">
+
         </form>
+        <form action="/admins/coffees/{{$coffee->id}}" method="POST">
+            @csrf
+            @method('DELETE')
+            <input type="hidden" value="{{$coffee->id}}">
+            <input class="btn btn-danger" type="submit" value="XOÁ">
+        </form>
+
     </div>
 </div>
 

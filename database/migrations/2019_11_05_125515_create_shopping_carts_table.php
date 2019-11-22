@@ -18,7 +18,7 @@ class CreateShoppingCartsTable extends Migration
             $table->integer('quantity');
             $table->integer('price');
             $table->integer('id_coffee')->unsigned();
-            $table->integer('id_customer')->unsigned();
+            $table->integer('id_customer')->nullable()->unsigned();
             $table->foreign('id_coffee')->references('id')->on('coffees')->onDelete('RESTRICT');
             $table->foreign('id_customer')->references('id')->on('customers')->onDelete('RESTRICT');
             $table->timestamps();

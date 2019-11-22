@@ -45,6 +45,12 @@ Route::group(['prefix' => 'admins/coffees', 'middleware' => ['auth:admin']], fun
     Route::post('/', 'Admin\CoffeesManagerController@store');
     Route::get('/{id}', 'Admin\CoffeesManagerController@show');
     Route::put('/{id}', 'Admin\CoffeesManagerController@update');
+    Route::delete('/{id}', 'Admin\CoffeesManagerController@delete');
+});
+
+Route::group(['prefix' => 'admins/news', 'middleware' => ['auth:admin']], function () {
+    Route::get('/', 'Admin\NewsManagerController@index');
+    Route::get('/{id}','Admin\NewsManagerController@show');
 });
 
 Route::group(['prefix' => 'admins/staffs', 'middleware' => ['isSuperAdmin', 'auth:admin']], function () {

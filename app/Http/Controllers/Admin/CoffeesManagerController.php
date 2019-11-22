@@ -23,6 +23,16 @@ class CoffeesManagerController extends Controller
         $coffee_types = DB::table('coffee_types')->get();
         return view('admin/manage/coffees/detail')->with(['coffee' => $coffee, 'units' => $units, 'brands' => $brands, 'coffee_types' => $coffee_types]);
     }
+    public function delete(Request $request, $id)
+    {
+        $image = DB::table('coffees')->where('id', $id)->first();
+        $oldFilePath = public_path("images/coffees/") . $image->image;
+        DB::table('coffees')->delete($id);
+        File::delete($oldFilePath);
+        $request->session()->flash('flash_message', 'Xoá sản phẩm thành công!');
+        return redirect("/admins/coffees");
+    
+    }
 
     public function update(Request $request, $id)
     {

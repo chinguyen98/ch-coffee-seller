@@ -1,6 +1,17 @@
 @extends('layouts.admins')
 
 @section('content')
+
+@if ( Session::has('flash_message') )
+
+<div class="text-center popup-flash-mess">
+    <h3>Thông báo:</h3>
+    <p>{{Session::get('flash_message')}}</p>
+</div>
+
+@endif
+
+
 <div class="container text-center">
     <h1>Quản lý sản phẩm</h1>
     <div class="input-group my-4">
@@ -22,13 +33,10 @@
             @foreach($coffees as $coffee)
             <tr>
                 <th scope="row">{{$coffee->id}}</th>
-                <td>{{$coffee->name}}</td>
-                <td>
-                    <div>
-                        <a class="btn btn-secondary" href="/admins/coffees/{{$coffee->id}}">Xem thông tin</a>
-                        <a class="btn btn-danger" href="#">Xoá</a>
-                    </div>
-                </td>
+                <div>
+                    <td><a href="/admins/coffees/{{$coffee->id}}">{{$coffee->name}}</a></td>
+                </div>
+                
             </tr>
             @endforeach
         </tbody>

@@ -28,13 +28,7 @@
     <a class="nav-link col col-md-6" href="/admins/coffees">
         <h3>Quản lý sản phẩm</h3>
     </a>
-    <a class="nav-link col col-md-6" href="#">
-        <h3>Quản lý nhãn hiệu</h3>
-    </a>
-    <a class="nav-link col col-md-6" href="#">
-        <h3>Quản lý loại cà phê</h3>
-    </a>
-    <a class="nav-link col col-md-6" href="#">
+    <a class="nav-link col col-md-6" href="/admins/news">
         <h3>Quản lý tin tức</h3>
     </a>
     <a class="nav-link col col-md-6" href="#">
