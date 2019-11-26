@@ -109,7 +109,7 @@
   text-align:center;
 }
 
-.main_coffee_detail .quantity-updown{
+.quantity-updown{
   display: inline-block;
   background-color: rgba(0, 0, 0, 0.3);
   padding-top:0.5em;
@@ -121,7 +121,7 @@
   user-select: none;
 }
 
-.main_coffee_detail .quantity-updown:hover{
+.quantity-updown:hover{
   background-color: rgba(0, 0, 0, 1);
   cursor:pointer;
 }
@@ -341,3 +341,51 @@
 #txt_info{
   height: 15rem;
 }
+
+.cartNotify{
+  text-align: center;
+  width: 20em;
+  height: 7em;
+  background-color: whitesmoke;
+  position: absolute;
+  right:5em;
+  top: 5em;
+  opacity: 0;
+  transform: translateX(20em);
+  transition: all 1s;
+}
+
+.cartNotify span{
+  color:black;
+}
+
+.cartNotify span:hover{
+  color:red;
+  cursor: pointer;
+}
+
+.cartNotify-show{
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/*Cart*/
+
+.cart-image-container{
+  width:8em;
+  height:8em; 
+}
+
+.cart-image{
+  width:8em;
+  height:8em; 
+}
+
+.btnDatHang{
+  font-size: 3.5em;
+}
+
+.cart-close{
+  visibility: hidden;
+}
+

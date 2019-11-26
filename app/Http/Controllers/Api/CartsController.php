@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class NewsController extends Controller
+class CartsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,20 +14,7 @@ class NewsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $news=DB::table('news')->get();//vong lap
-        return view('news/index')->with(['title'=>'Tin Tức','newsactive'=>'active', 'qe'=>$news]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        
-    }
+    { }
 
     /**
      * Store a newly created resource in storage.
@@ -45,21 +33,11 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($arrCoffeeId)
     {
-       $new=DB::table('news')->where('id',$id)->first();
-       return view('news/news')->with(['title'=>'Tin Tức','newsactive'=>'active', 'new'=>$new]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        $query = "SELECT id,name,image,price FROM `coffees` WHERE `id` in ($arrCoffeeId)";
+        $cartItem = DB::select($query);
+        return response()->json($cartItem, 200, [], JSON_UNESCAPED_UNICODE);
     }
 
     /**

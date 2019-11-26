@@ -49,20 +49,12 @@
 			<div class="d-flex flex-row align-items-center">
 				<h5 class="pr-3 pt-2">Số lượng đặt mua: </h5>
 				<span id="btn-quantity-desc" class="quantity-updown text-center">-</span>
-				<input type="text" name="quantity" id="quantity" value="0" />
+				<input type="text" name="quantity" class="quantity" value="1" min="1" />
 				<span id="btn-quantity-insc" class="quantity-updown text-center">+</span>
 			</div>
 			<br>
 
-			@guest
-
 			<p><a id="btnAddToCart" class="btn btn-lg btn-primary btn-outline-primary">THÊM VÀO GIỎ</a></p>
-
-			@else
-
-			<p><a href="#" class="btn btn-lg btn-primary btn-outline-primary">THÊM VÀO GIỎ</a></p>
-
-			@endguest
 
 		</div>
 		<div class="col col-sm-6 col-lg-4">
@@ -92,16 +84,44 @@
 
 <script src="{{asset('js/owner.js') }}"></script>
 
-@guest
 
 <script>
 	const btnAddToCart = document.querySelector('#btnAddToCart');
+	const quantity = document.querySelector('.quantity');
+	const btnquantitydesc = document.querySelector('#btn-quantity-desc');
 
 	function addToCart(e) {
-		alert("Da them");
+		let inputQuantity = quantity.value;
+		if (inputQuantity <= 0) {
+			return;
+		}
+		if (isNaN(inputQuantity)) {
+			quantity.value = 1;
+		}
+		let id = document.URL.split('/').pop();
+		if (localStorage.getItem(id) === null) {
+			localStorage.setItem(id, inputQuantity);
+		} else {
+			let getQuantity = parseInt(localStorage.getItem(id));
+			getQuantity = getQuantity + parseInt(inputQuantity);
+			localStorage.setItem(id, getQuantity);
+		}
+		cartNotify.classList.add('cartNotify-show');
+		quantityOfCart.innerHTML = localStorage.length;
+	}
+
+	function resetVal(e) {
+		if (isNaN(quantity.value)) {
+			quantity.value = 1;
+		}
+		if (quantity.value <= 0) {
+			quantity.value = 1;
+		}
 	}
 
 	btnAddToCart.addEventListener('click', addToCart);
+	quantity.addEventListener('change', resetVal)
+	btnquantitydesc.addEventListener('click', resetVal);
 </script>
 
-@endguest
+g

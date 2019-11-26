@@ -50,9 +50,13 @@ Route::group(['prefix' => 'admins/coffees', 'middleware' => ['auth:admin']], fun
 
 Route::group(['prefix' => 'admins/news', 'middleware' => ['auth:admin']], function () {
     Route::get('/', 'Admin\NewsManagerController@index');
-    Route::get('/{id}','Admin\NewsManagerController@show');
+    Route::get('/{id}', 'Admin\NewsManagerController@show');
 });
 
 Route::group(['prefix' => 'admins/staffs', 'middleware' => ['isSuperAdmin', 'auth:admin']], function () {
     Route::get('/', 'Admin\StaffManagerController@index');
+});
+
+Route::group(['prefix' => 'carts'], function () {
+    Route::get('/', 'CartsController@index');
 });

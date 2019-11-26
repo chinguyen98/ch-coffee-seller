@@ -13,7 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::apiResource('coffees', 'Api\CoffeesController')->only(['index','show']);
+Route::apiResource('coffees', 'Api\CoffeesController')->only(['index', 'show']);
+Route::apiResource('carts', 'Api\CartsController')->only(['show']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

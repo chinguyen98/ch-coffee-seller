@@ -60,6 +60,19 @@
 		<script src="js/scrollax.min.js"></script>
 		<script src="js/main.js"></script>
 		<script src="js/findmodal.js"></script>
+		<script>
+			const quantityOfCart = document.querySelector('#cartNum');
+			const cartNotify = document.querySelector('.cartNotify');
+			const closeCartBtn = document.querySelector('.closeCart');
+
+			quantityOfCart.innerHTML = localStorage.length;
+
+			function closeCartNotify(e) {
+				cartNotify.classList.remove('cartNotify-show');
+			}
+
+			closeCartBtn.addEventListener('click', closeCartNotify);
+		</script>
 	</body>
 
 	</html>
