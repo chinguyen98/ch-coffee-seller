@@ -23,6 +23,8 @@ Route::resource('intros', 'IntrosController');
 
 Route::resource('news', 'NewsController');
 
+Route::get('checkout', 'CheckoutController@index');
+
 Auth::routes();
 
 Route::get('/home', 'AuthforCustomer\HomeController@index')->name('home');

@@ -389,3 +389,24 @@
   visibility: hidden;
 }
 
+/*Notify*/
+.notify{
+  width:30em;
+  min-height: 5em;
+  background-color: black;
+  color: white;
+  position: fixed;
+  top: 0;
+  right: 35%;
+  transform: translateY(-5em);
+  transition: all 1s;
+  opacity: 0;
+}
+
+.notify--show{
+  transform: translateY(0);
+  z-index: 9999;
+  background-color: red;
+  opacity: 1;
+}
+
