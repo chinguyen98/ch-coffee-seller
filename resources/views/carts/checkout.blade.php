@@ -28,14 +28,11 @@
 
 <div class="checkout-container container text-center mt-3">
     <div class="progress my-3" style="height: 3em;v ">
-        <div class="progress-bar border bg-danger progress-phase-1" style="width:40%">
+        <div class="progress-bar border bg-danger progress-phase-1" style="width:50%">
             Nhập thông tin đăng nhập
         </div>
-        <div class="progress-bar border bg-dark progress-phase-2" style="width:30%">
+        <div class="progress-bar border bg-dark progress-phase-2" style="width:50%">
             Kiểm tra đơn hàng
-        </div>
-        <div class="progress-bar border bg-dark progress-phase-3" style="width:30%">
-            Danger
         </div>
     </div>
 
@@ -47,9 +44,10 @@
                     <div class="card-header text-center">
                         <h4>Vui lòng điền đầy đủ thông tin bên dưới:</h4>
                     </div>
-
+                    
                     <div class="card-body">
-                        <form>
+                        <form action="/checkout" id="checkoutForm" method="POST">
+                            @csrf
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">Tên: </label>
 
@@ -74,50 +72,19 @@
                                 </div>
                             </div>
 
-                            <!--
                             <div class="form-group row">
-                                <label for="phone_number" class="col-md-4 col-form-label text-md-right">Tỉnh/Thành phố: </label>
-
-                                <div class="col-md-6">
-                                    <select name="city" class="custom-select">
-                                        
-                                    </select>
-                                </div>
-
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="phone_number" class="col-md-4 col-form-label text-md-right">Quận/Huyện: </label>
-
-                                <div class="col-md-6">
-                                    <select name="city" class="custom-select">
-                                        
-                                    </select>
-                                </div>
-
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="phone_number" class="col-md-4 col-form-label text-md-right">Phường/Xã: </label>
-
-                                <div class="col-md-6">
-                                    <select name="city" class="custom-select">
-                                        
-                                    </select>
-                                </div>
-
-                            </div>
--->
-
-                            <div class="form-group row">
-                                <label for="address" class="col-md-4 col-form-label text-md-right">Địa chỉ: </label>
+                                <label for="address" class="col-md-4 col-form-label text-md-right">Địa chỉ giao hàng: </label>
 
                                 <div class="col-md-6">
                                     <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="2008, Long Thành, Đồng Nai" value="{{ old('address') }}" placeholder="Ví dụ: 2008, Long Thành, Đồng Nai" required autocomplete="address" autofocus>
                                 </div>
                             </div>
 
+                            <input type="hidden" name="cart" value="">
+                            <input type="hidden" name="shipping_info" value="1">
+
                         </form>
+                        <div id="phase-1"></div>
                     </div>
                 </div>
             </div>
@@ -133,6 +100,7 @@
             <h3>Bước kế tiếp</h3>
         </button>
     </div>
+
     <div class="phase-2 d-none">
         <h1>Kiểm tra đơn hàng của bạn</h1>
         <div class="d-flex flex-row">
@@ -155,6 +123,7 @@
                     <h5 class="checkout-info__phone text-left ml-2 ">Số điện thoại: 0123456789</h5>
                     <h5 class="checkout-info__address text-left ml-2">Địa chỉ giao hàng: 79 Đường 204 Cao Lỗ, Phường 4, Quận 8, TPHCM
                     </h5>
+                    <h5 class="checkout-info__email text-left ml-2 ">Địa chỉ email: tth@gmail.com</h5>
                 </div>
 
                 <div class="border text-left mt-3">
@@ -177,7 +146,7 @@
 
                         @if($loop->index==0)
                         <div class="form-check ml-5">
-                            <input class="form-check-input" type="radio" name="shipping_infos" id="exampleRadios1" value="{{$item->price}}" checked>
+                            <input class="form-check-input" type="radio" name="shipping_infos" id="{{$item->id}}" value="{{$item->price}}" checked>
                             <label class="form-check-label d-flex flex-row justify-content-between" for="exampleRadios1">
                                 <h5>{{$item->name}}</h5>
                                 <p class="text-secondary mr-2">{{number_format($item->price)}} VND</p>
@@ -187,7 +156,7 @@
                         @else
 
                         <div class="form-check ml-5">
-                            <input class="form-check-input" type="radio" name="shipping_infos" id="exampleRadios1" value="{{$item->price}}">
+                            <input class="form-check-input" type="radio" name="shipping_infos" id="{{$item->id}}" value="{{$item->price}}">
                             <label class="form-check-label d-flex flex-row justify-content-between" for="exampleRadios1">
                                 <h5>{{$item->name}}</h5>
                                 <p class="text-secondary mr-2">{{number_format($item->price)}} VND</p>
@@ -201,7 +170,7 @@
                     </div>
 
                 </div>
-
+                <div id="phase-2"></div>
                 <div class="border text-left mt-3 p-2">
                     <div class="d-flex flex-row justify-content-between">
                         <p>Tạm tính:</p>
@@ -224,10 +193,11 @@
             </div>
 
         </div>
-        <a class="btn btn-danger my-5" href="#">
-            <h1>MUA HÀNG</h1>
-        </a>
-        <div id="phase-2"></div>
+
+
+        <input form="checkoutForm" style="width:10em;height:2em;font-size:3em" class="btn btn-danger my-5" type="submit" value="MUA HÀNG">
+
+
     </div>
 </div>
 
@@ -245,6 +215,8 @@
     const checkoutShippingField = document.querySelector('.checkout-shipping');
     const shippingInfoRadioBtn = document.querySelectorAll('input[type="radio"][name="shipping_infos"]');
     const checkoutTotalPrice = document.querySelector('.checkout-total-price');
+    const hiddenCartInput = document.querySelector('input[type="hidden"][name="cart"]');
+    const hiddenShippingInfoInput = document.querySelector('input[type="hidden"][name="shipping_info"]');
 
     function changeToPhase2(e) {
         let err = [];
@@ -284,14 +256,23 @@
         document.querySelector('.checkout-info__name').innerHTML = guestNameInput.value;
         document.querySelector('.checkout-info__phone').innerHTML = "Điện thoại: " + guestPhoneInput.value;
         document.querySelector('.checkout-info__address').innerHTML = "Địa chỉ: " + guestAddressInput.value;
+        document.querySelector('.checkout-info__email').innerHTML = "Email: " + guestEmailInput.value;
+
         checkoutPriceField.innerHTML = String(calcCartPrice()).replace(/(.)(?=(\d{3})+$)/g, '$1,') + " VND";
         checkoutShippingField.innerHTML = String(document.querySelector('input[type="radio"][name="shipping_infos"]').value).replace(/(.)(?=(\d{3})+$)/g, '$1,') + " VND";
-        checkoutTotalPrice.innerHTML = calcCartPrice() + parseInt(document.querySelector('input[type="radio"][name="shipping_infos"]').value) + " VND";
+        checkoutTotalPrice.innerHTML = String(calcCartPrice() + parseInt(document.querySelector('input[type="radio"][name="shipping_infos"]').value)).replace(/(.)(?=(\d{3})+$)/g, '$1,') + " VND";
+
         document.querySelector('#phase-2').scrollIntoView(false);
     }
 
     const renderCheckoutCart = async () => {
         const cart = Object.keys(localStorage).join(',');
+
+        if (cart == "") {
+            checkoutCart.innerHTML = "Hoá đơn của bạn chưa có đơn hàng nào!";
+            document.querySelector('input[type="submit"]').classList.add('d-none');
+            return;
+        }
 
         const cartList = await fetch(`http://127.0.0.1:8000/api/carts/${cart}`)
             .then(res => {
@@ -311,6 +292,14 @@
         `
         ).join('');
 
+        const cartListHiddenValue = cartList.map(cart => {
+            let id = cart.id;
+            return {
+                [cart.id]: localStorage.getItem(cart.id)
+            }
+        });
+        hiddenCartInput.value = JSON.stringify(cartListHiddenValue);
+
         checkoutCart.innerHTML = cartListHtml;
     }
 
@@ -319,6 +308,7 @@
         document.querySelector('.progress-phase-2').classList.replace('bg-danger', 'bg-dark');
         phase2.classList.add('d-none');
         phase1.classList.remove('d-none');
+        document.querySelector('#phase-1').scrollIntoView(false);
     }
 
     function calcCartPrice() {
@@ -333,6 +323,7 @@
     function renderShippingAndTotalPrice(e) {
         checkoutShippingField.innerHTML = String(this.value).replace(/(.)(?=(\d{3})+$)/g, '$1,') + " VND";
         checkoutTotalPrice.innerHTML = String(calcCartPrice() + parseInt(this.value)).replace(/(.)(?=(\d{3})+$)/g, '$1,') + " VND";
+        hiddenShippingInfoInput.value = this.id;
     }
 
     passPhase2Btn.addEventListener('click', changeToPhase2);

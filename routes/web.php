@@ -23,7 +23,11 @@ Route::resource('intros', 'IntrosController');
 
 Route::resource('news', 'NewsController');
 
-Route::get('checkout', 'CheckoutController@index');
+Route::get('checkout', 'CheckoutController@index')->middleware('checkIfExistOrder');
+
+Route::post('checkout', 'CheckoutController@requestOrder');
+
+Route::get('orderStatus', 'OrdersController@orderStatus');
 
 Auth::routes();
 
