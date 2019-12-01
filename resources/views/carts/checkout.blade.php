@@ -126,6 +126,10 @@
                     <h5 class="checkout-info__email text-left ml-2 ">Địa chỉ email: tth@gmail.com</h5>
                 </div>
 
+                <button class="btn btn-secondary my-3 pass-phase-1">
+                    <h2>Sửa thông tin</h2>
+                </button>
+
                 <div class="border text-left mt-3">
                     <h4 class="ml-2">Hình thức thanh toán:</h4>
                     <div>
@@ -187,9 +191,7 @@
                     </div>
                 </div>
 
-                <button class="btn btn-secondary my-3 pass-phase-1">
-                    <h2>Sửa thông tin</h2>
-                </button>
+                
             </div>
 
         </div>

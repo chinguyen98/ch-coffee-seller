@@ -20,14 +20,22 @@ class CheckoutController extends Controller
 
     public function requestOrder(Request $request)
     {
-        
+        DB::table('orders')->insert(['id_guest' => $request->session()->getId(), 'id_shipping_info' => $request->input('shipping_info')]);
+        $id_order = DB::table('orders')->where('id_guest', $request->session()->getId())->first(['id']);
+        $cart = $request->input('cart'); //String
+        $cartList = json_decode($cart, true);
+        foreach ($cartList as $item) {
+            foreach ($item as $id_coffee => $quantity) {
+                $price = DB::table('coffees')->find($id_coffee, ['price']);
+                DB::table('order_details')->insert(['id_order' => $id_order->id, 'id_coffee' => $id_coffee, 'quantity' => $quantity, 'price' => $price->price]);
+            }
+        }
         $order = array();
-        $order[] = $request->input('name');
-        $order[] = $request->input('email');
-        $order[] = $request->input('address');
-        $order[] = $request->input('phone_number');
-        $order[] = $request->input('cart');
-        $order[] = $request->input('shipping_info');
+        $order['name'] = $request->input('name');
+        $order['email'] = $request->input('email');
+        $order['address'] = $request->input('address');
+        $order['phone_number'] = $request->input('phone_number');
+        $order['status'] = 1;
         $request->session()->put('order', $order);
 
         return redirect('/orderStatus');

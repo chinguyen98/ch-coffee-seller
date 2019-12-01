@@ -21,7 +21,15 @@
 
 @if ( Session::has('order') )
 
-{{var_dump(Session::get('order'))}}
+<div class="container text-center my-5">
+    @if(Session::get('order')['status']==1)
+    <h1>Chúc mừng bạn đã đặt hàng thành công</h1>
+    <h4>Vui lòng đợi nhân viên chúng tôi liên hệ với bạn!</h4>
+    {{var_dump(Session::get('order'))}}
+    @else
+    <h1>HELLO XONG RỒI ĐÓ</h1>
+    @endif
+</div>
 
 @endif
 
