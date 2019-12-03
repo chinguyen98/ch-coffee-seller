@@ -316,6 +316,21 @@
   animation-duration: 2s;
 }
 
+.popup-flash-approval-order{
+  width: 30rem;
+  height: 8rem;
+  background-color: rgb(255, 0, 13);
+  position: fixed;
+  z-index: 9999;
+  margin-left: 35%;
+  transform: translateY(-8em);
+  opacity: 0;
+  animation-name: showPopUpFlashMessage;
+  animation-iteration-count: 2;
+  animation-direction: alternate;
+  animation-duration: 2s;
+}
+
 @keyframes showPopUpFlashMessage{
   0%  {
     transform: translateY(-8em);
@@ -408,5 +423,15 @@
   z-index: 9999;
   background-color: red;
   opacity: 1;
+}
+
+.none-checkOrder-title{
+  color: black;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.none-checkOrder-content{
+  font-size: 1.2em;
 }
 

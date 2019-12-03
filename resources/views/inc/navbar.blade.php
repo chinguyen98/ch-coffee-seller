@@ -10,6 +10,7 @@
         <li class="nav-item {{$introactive ?? ""}}"><a href="/intros" class="nav-link">Giới thiệu</a></li>
         <li class="nav-item {{$coffeeactive ?? ""}}"><a href="/coffees" class="nav-link">Sản phẩm</a></li>
         <li class="nav-item {{$newsactive ?? ""}}"><a href="/news" class="nav-link">Tin tức</a></li>
+        <li class="nav-item {{$orderactive ?? ""}}"><a href="/orders" class="nav-link">Theo dõi đơn hàng</a></li>
         <li class="menu_account_container nav-item dropdown">
           @guest
           <a class="nav-link dropdown-toggle" href="/login" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tài khoản</a>

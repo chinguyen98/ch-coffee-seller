@@ -11,6 +11,9 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 Route::get('/', 'HomeController@index');
 
 Route::get('/brandandtype', 'CoffeesController@getCoffeesByBrandAndType');
@@ -27,7 +30,7 @@ Route::get('checkout', 'CheckoutController@index')->middleware('checkIfExistOrde
 
 Route::post('checkout', 'CheckoutController@requestOrder');
 
-Route::get('orderStatus', 'OrdersController@orderStatus');
+Route::get('orders', 'OrdersController@index');
 
 Auth::routes();
 
@@ -44,6 +47,11 @@ Route::post('/admins/login', 'Admin\Auth\LoginController@login')->name('admin.lo
 Route::post('/admins/logout', 'Admin\Auth\LoginController@logout');
 
 Route::get('/admins/home', 'Admin\AdminsController@index')->name('admin.home');
+
+Route::group(['prefix' => 'admins/checkorder', 'middleware' => ['auth:admin']], function () {
+    Route::get('/', 'Admin\CheckOrderController@index');
+    Route::get('/{id}', 'Admin\CheckOrderController@show');
+});
 
 Route::group(['prefix' => 'admins/coffees', 'middleware' => ['auth:admin']], function () {
     Route::get('/', 'Admin\CoffeesManagerController@index');

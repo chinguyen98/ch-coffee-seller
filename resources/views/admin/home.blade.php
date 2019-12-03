@@ -1,6 +1,17 @@
 @extends('layouts.admins')
 
 @section('content')
+
+@if($order_count>0)
+
+<div class="text-center popup-flash-approval-order">
+    <h3>Thông báo:</h3>
+    <p>Hiện tại có {{$order_count}} đơn hàng cần duyệt</p>
+    <a href="/admins/checkorder" class="btn btn-danger">Xem đơn hàng cần duyệt</a>
+</div>
+
+@endif
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -37,7 +48,7 @@
     <a class="nav-link col col-md-6" href="#">
         <h3>Quản lý đơn hàng</h3>
     </a>
-    <a class="nav-link col col-md-6" href="#">
+    <a class="nav-link col col-md-6" href="/admins/checkorder">
         <h3>Duyệt đơn hàng</h3>
     </a>
 </div>

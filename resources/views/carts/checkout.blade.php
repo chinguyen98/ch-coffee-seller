@@ -44,9 +44,9 @@
                     <div class="card-header text-center">
                         <h4>Vui lòng điền đầy đủ thông tin bên dưới:</h4>
                     </div>
-                    
+
                     <div class="card-body">
-                        <form action="/checkout" id="checkoutForm" method="POST">
+                        <form action="/checkout" id="checkoutForm" method="POST" onsubmit="return clearCart()">
                             @csrf
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">Tên: </label>
@@ -191,7 +191,7 @@
                     </div>
                 </div>
 
-                
+
             </div>
 
         </div>
@@ -326,6 +326,12 @@
         checkoutShippingField.innerHTML = String(this.value).replace(/(.)(?=(\d{3})+$)/g, '$1,') + " VND";
         checkoutTotalPrice.innerHTML = String(calcCartPrice() + parseInt(this.value)).replace(/(.)(?=(\d{3})+$)/g, '$1,') + " VND";
         hiddenShippingInfoInput.value = this.id;
+    }
+
+    function clearCart() {
+        localStorage.clear();
+        document.querySelector('#cartNum').innerHTML = 0;
+        return true;
     }
 
     passPhase2Btn.addEventListener('click', changeToPhase2);
