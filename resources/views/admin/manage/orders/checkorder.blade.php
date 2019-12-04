@@ -47,45 +47,6 @@
         </div>
     </div>
 
-    <!--
-    <div class="none-checkOrder-container">
-        <div class="mt-5 border row">
-            <div class="p-2 col col-md-4 border">
-                <h3 class="text-danger text-center">Khách vãng lai:</h3>
-                <div><span class="none-checkOrder-title mr-2">Mã đơn hàng:</span> <span class="none-checkOrder-content">69</span></div>
-                <div><span class="none-checkOrder-title mr-2">Tên khách hàng:</span> <span class="none-checkOrder-content">Nguyễn Đắc Chí</span></div>
-                <div><span class="none-checkOrder-title mr-2">Địa chỉ giao hàng:</span> <span class="none-checkOrder-content">GH</span></div>
-                <div><span class="none-checkOrder-title mr-2">Số điện thoại:</span> <span class="none-checkOrder-content">123</span></div>
-                <div><span class="none-checkOrder-title mr-2">Email:</span> <span class="none-checkOrder-content">email</span></div>
-                <div><span class="none-checkOrder-title mr-2">Thành tiền:</span> <span class="none-checkOrder-content">5000000</span></div>
-            </div>
-            <div class="p-2 col col-md-4 border">
-                <h3 class="text-info text-center">Đơn hàng:</h3>
-                <div class="d-flex flex-row justify-content-between">
-                    <h5>Cà phê gì đó</h5>
-                    <p>x 25</p>
-                </div>
-                <div class="d-flex flex-row justify-content-between">
-                    <h5>Cà phê gì đó</h5>
-                    <p>x 25</p>
-                </div>
-                <div class="d-flex flex-row justify-content-between">
-                    <h5>Cà phê gì đó</h5>
-                    <p>x 25</p>
-                </div>
-            </div>
-            <div class="p-2 col col-md-4 border">
-                <h3 class="text-secondary text-center">Xét duyệt:</h3>
-                <div class="text-center d-flex flex-column">
-                    <a href="#" class="btn btn-success my-2">GỌI ĐIỆN</a>
-                    <a href="#" class="btn btn-primary my-2">DUYỆT ĐƠN HÀNG</a>
-                    <a href="#" class="btn btn-danger my-2">HUỶ ĐƠN HÀNG</a>
-                </div>
-            </div>
-        </div>
-    </div>
--->
-
     @else
 
     <h3>Hiện tại không có đơn hàng cần duyệt!</h3>

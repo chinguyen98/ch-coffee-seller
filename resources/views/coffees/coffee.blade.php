@@ -123,5 +123,3 @@
 	quantity.addEventListener('change', resetVal)
 	btnquantitydesc.addEventListener('click', resetVal);
 </script>
-
-g
