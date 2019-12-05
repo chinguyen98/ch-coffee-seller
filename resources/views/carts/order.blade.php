@@ -30,19 +30,11 @@
     @endif
 
     <h1>Vui lòng nhập mã để theo dõi đơn hàng:</h1>
+    <form action="/orderstatus" method="get">
+        Mã đơn hàng: <input type="text" name="id_order" class="ml-4">
+        <input class="btn btn-primary" type="submit" value="Kiểm tra">
+    </form>
 
 </div>
-
-
-@if(Session::has('orderNotify'))
-<!--
-<script>
-    window.addEventListener('load', () => {
-        localStorage.clear();
-        document.querySelector('#cartNum').innerHTML = 0;
-    });
-</script>
--->
-@endif
 
 @endsection

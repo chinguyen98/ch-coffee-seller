@@ -32,6 +32,8 @@ Route::post('checkout', 'CheckoutController@requestOrder');
 
 Route::get('orders', 'OrdersController@index');
 
+Route::get('orderstatus', 'OrdersController@showStatus');
+
 Auth::routes();
 
 Route::get('/home', 'AuthforCustomer\HomeController@index')->name('home');
@@ -51,6 +53,7 @@ Route::get('/admins/home', 'Admin\AdminsController@index')->name('admin.home');
 Route::group(['prefix' => 'admins/checkorder', 'middleware' => ['auth:admin']], function () {
     Route::get('/', 'Admin\CheckOrderController@index');
     Route::get('/{id}', 'Admin\CheckOrderController@show');
+    Route::post('/handleOrder', 'Admin\CheckOrderController@handleOrder');
 });
 
 Route::group(['prefix' => 'admins/coffees', 'middleware' => ['auth:admin']], function () {

@@ -2,6 +2,15 @@
 
 @section('content')
 
+@if ( Session::has('flash_message') )
+
+<div class="text-center popup-flash-mess">
+    <h3>Thông báo:</h3>
+    <p>{{Session::get('flash_message')}}</p>
+</div>
+
+@endif
+
 <div class="container">
     <h1 class="my-5 text-center">Duyệt đơn hàng</h1>
 

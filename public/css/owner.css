@@ -435,3 +435,23 @@
   font-size: 1.2em;
 }
 
+.confirmDeleteAlert{
+  width: 30%;
+  height: 16em;
+  background-color: red;
+  opacity: 0;
+  position: fixed;
+  left: 35%;
+  top: 35%;
+  transform: scale(1,1);
+  transition: all 1s;
+  z-index: -999;
+}
+
+.confirmDeleteAlert--show{
+  transform: scale(1.2,1.2);
+  background-color: red;
+  z-index: 999;
+  opacity: 1;
+}
+

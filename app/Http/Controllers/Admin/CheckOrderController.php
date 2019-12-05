@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Order;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class CheckOrderController extends Controller
@@ -23,5 +24,20 @@ class CheckOrderController extends Controller
             $totalPrice += $item->price * $item->quantity;
         }
         return view('admin/manage/orders/detail')->with(['order' => $order, 'totalPrice' => $totalPrice]);
+    }
+
+    public function handleOrder(Request $request)
+    {
+        $id_order=$request->input('id_order');
+        if ($request->input('acceptOrder')) {
+            DB::table('orders')->where('id', $id_order)->update(['id_status' => 2]);
+            $request->session()->flash('flash_message', "Duyệt đơn hàng thành công!");
+            return redirect('/admins/checkorder');
+        } elseif ($request->input('declineOrder')) {
+            DB::table('order_details')->where('id_order',$id_order)->delete();
+            DB::table('orders')->delete($id_order);
+            $request->session()->flash('flash_message', "Huỷ đơn hàng thành công!");
+            return redirect('/admins/checkorder');
+        }
     }
 }
