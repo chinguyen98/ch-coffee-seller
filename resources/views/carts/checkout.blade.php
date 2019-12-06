@@ -348,6 +348,200 @@
 
 @else
 
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+<div class="container my-5 text-center">
+    <div class="phase-2">
+        <h1>Kiểm tra đơn hàng của bạn</h1>
+        <div class="d-flex flex-row">
+            <div class="col col-md-6 ml-3">
+                <h3>Giỏ hàng của bạn: </h3>
+                <div class="checkout-cart border">
+
+                </div>
+                <a class="btn btn-primary mt-2" href="/coffees">
+                    <h2>Tiếp tục mua sản phẩm</h2>
+                </a>
+                <a class="btn btn-info mt-2" href="/carts">
+                    <h2>Xem lại chi tiết giỏ hàng</h2>
+                </a>
+            </div>
+            <div class="col col-md-6 ml-3">
+                <h3>Thông tin hoá đơn của bạn: </h3>
+                <div class="checkout-info border">
+                    <h3 class="checkout-info__name text-info">{{Auth::user()->name}}</h3>
+                    <h5 class="checkout-info__phone text-left ml-2 ">Số điện thoại: {{Auth::user()->phone_number}}</h5>
+                    <h5 class="checkout-info__address text-left ml-2">Địa chỉ giao hàng: {{Auth::user()->address}}</h5>
+                    <h5 class="checkout-info__email text-left ml-2 ">Địa chỉ email: {{Auth::user()->email}}</h5>
+                </div>
+
+                <a href="#" class="btn btn-secondary mt-3">
+                    <h2>Sửa thông tin</h2>
+                </a>
+
+                <div class="border text-left mt-3">
+                    <h4 class="ml-2">Hình thức thanh toán:</h4>
+                    <div>
+                        <div class="form-check ml-5">
+                            <input class="form-check-input" type="radio" id="exampleRadios1" value="option1" checked>
+                            <label class="form-check-label" for="exampleRadios1">
+                                <h5>Thanh toán khi nhận hàng</h5>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border text-left mt-3">
+                    <h4 class="ml-2">Hình thức vận chuyển:</h4>
+                    <div>
+
+                        @foreach($shipping_infos as $item)
+
+                        @if($loop->index==0)
+                        <div class="form-check ml-5">
+                            <input class="form-check-input" type="radio" name="shipping_infos" id="{{$item->id}}" value="{{$item->price}}" checked>
+                            <label class="form-check-label d-flex flex-row justify-content-between" for="exampleRadios1">
+                                <h5>{{$item->name}}</h5>
+                                <p class="text-secondary mr-2">{{number_format($item->price)}} VND</p>
+                            </label>
+                        </div>
+
+                        @else
+
+                        <div class="form-check ml-5">
+                            <input class="form-check-input" type="radio" name="shipping_infos" id="{{$item->id}}" value="{{$item->price}}">
+                            <label class="form-check-label d-flex flex-row justify-content-between" for="exampleRadios1">
+                                <h5>{{$item->name}}</h5>
+                                <p class="text-secondary mr-2">{{number_format($item->price)}} VND</p>
+                            </label>
+                        </div>
+
+                        @endif
+
+                        @endforeach
+
+                    </div>
+
+                </div>
+                <div id="phase-2"></div>
+                <div class="border text-left mt-3 p-2">
+                    <div class="d-flex flex-row justify-content-between">
+                        <p>Tạm tính:</p>
+                        <p class="checkout-price"></p>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between">
+                        <p>Phí vận chuyển:</p>
+                        <p class="checkout-shipping"></p>
+                    </div>
+                    <div class="border"></div>
+                    <div class="d-flex flex-row justify-content-between mt-3">
+                        <h3>Thành tiền: </h3>
+                        <h2 class="checkout-total-price text-danger"></h2>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <form action="">
+            <input type="hidden" name="cart" value="">
+            <input type="hidden" name="shipping_info" value="1">
+            <input form="checkoutForm" style="width:10em;height:2em;font-size:3em" class="btn btn-danger my-5" type="submit" value="MUA HÀNG">
+        </form>
+
+
+    </div>
+</div>
+
+<script>
+    const passPhase2Btn = document.querySelector('.pass-phase-2');
+    const passPhase1Btn = document.querySelector('.pass-phase-1');
+    const phase1 = document.querySelector('.phase-1');
+    const phase2 = document.querySelector('.phase-2');
+    const guestNameInput = document.querySelector('input[name="name"]');
+    const guestPhoneInput = document.querySelector('input[name="phone_number"]');
+    const guestEmailInput = document.querySelector('input[name="email"]');
+    const guestAddressInput = document.querySelector('input[name="address"]');
+    const checkoutCart = document.querySelector('.checkout-cart');
+    const checkoutPriceField = document.querySelector('.checkout-price');
+    const checkoutShippingField = document.querySelector('.checkout-shipping');
+    const shippingInfoRadioBtn = document.querySelectorAll('input[type="radio"][name="shipping_infos"]');
+    const checkoutTotalPrice = document.querySelector('.checkout-total-price');
+    const hiddenCartInput = document.querySelector('input[type="hidden"][name="cart"]');
+    const hiddenShippingInfoInput = document.querySelector('input[type="hidden"][name="shipping_info"]');
+
+    const renderCheckoutCart = async () => {
+        const cart = Object.keys(localStorage).join(',');
+
+        if (cart == "") {
+            checkoutCart.innerHTML = "Hoá đơn của bạn chưa có đơn hàng nào!";
+            document.querySelector('input[type="submit"]').classList.add('d-none');
+            return;
+        }
+
+        const cartList = await fetch(`http://127.0.0.1:8000/api/carts/${cart}`)
+            .then(res => {
+                return res.json();
+            }).then(cartAsJson => {
+                return cartAsJson;
+            }).catch(err => {
+                console.log('Error when get API');
+            });
+
+        const cartListHtml = cartList.map(cart =>
+            `
+            <div class="d-flex flex-row p-2">
+                <span class="mr-3 text-primary">${localStorage.getItem(cart.id)}x</span>
+                <span data-id="${cart.id}" data-price="${cart.price}">${cart.name}</span>
+            </div>
+        `
+        ).join('');
+
+        const cartListHiddenValue = cartList.map(cart => {
+            let id = cart.id;
+            return {
+                [cart.id]: localStorage.getItem(cart.id)
+            }
+        });
+        hiddenCartInput.value = JSON.stringify(cartListHiddenValue);
+
+        checkoutCart.innerHTML = cartListHtml;
+
+        checkoutPriceField.innerHTML = String(calcCartPrice()).replace(/(.)(?=(\d{3})+$)/g, '$1,') + " VND";
+        checkoutShippingField.innerHTML = String(document.querySelector('input[type="radio"][name="shipping_infos"]').value).replace(/(.)(?=(\d{3})+$)/g, '$1,') + " VND";
+        checkoutTotalPrice.innerHTML = String(calcCartPrice() + parseInt(document.querySelector('input[type="radio"][name="shipping_infos"]').value)).replace(/(.)(?=(\d{3})+$)/g, '$1,') + " VND";
+    }
+
+    function calcCartPrice() {
+        let price = Object.keys(localStorage).reduce((total, item) => {
+            let quantity = parseInt(localStorage.getItem(item));
+            let price = document.querySelector(`span[data-id="${item}"]`).dataset.price;
+            return total + (price * quantity);
+        }, 0);
+        return price;
+    }
+
+    function renderShippingAndTotalPrice(e) {
+        checkoutShippingField.innerHTML = String(this.value).replace(/(.)(?=(\d{3})+$)/g, '$1,') + " VND";
+        checkoutTotalPrice.innerHTML = String(calcCartPrice() + parseInt(this.value)).replace(/(.)(?=(\d{3})+$)/g, '$1,') + " VND";
+        hiddenShippingInfoInput.value = this.id;
+    }
+
+    window.addEventListener('load', () => {
+        renderCheckoutCart();
+    });
+
+    shippingInfoRadioBtn.forEach(item => {
+        item.addEventListener('change', renderShippingAndTotalPrice);
+    })
+</script>
+
 @endguest
 
 @endsection

@@ -23,7 +23,10 @@
 <div class="container text-center">
     @if($status==null)
 
-    <h1>Đéo có đơn hàng</h1>
+    <div class="my-5">
+        <h1 >Không tìm thấy mã đơn hàng <span class="text-danger">{{$id}}</span></h1>
+        <a href="/orders" class="btn btn-primary">Tiếp tục tìm đơn hàng</a>
+    </div>
 
     @else
 
@@ -35,7 +38,7 @@
 
     @if($status->id_status==1)
 
-    <h1>Đơn hàng của bạn đang chờ duyệt.</h1>
+    <h1>Đơn hàng mã <span class="text-danger">{{$id}}</span> của bạn đang chờ duyệt.</h1>
     <h3>Vui lòng đợi nhân viên của chúng tôi liên hệ</h3>
 
     @elseif($status->id_status==2)
