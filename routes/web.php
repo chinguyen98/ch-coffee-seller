@@ -26,7 +26,7 @@ Route::resource('intros', 'IntrosController');
 
 Route::resource('news', 'NewsController');
 
-Route::get('checkout', 'CheckoutController@index')->middleware('checkIfExistOrder');
+Route::get('checkout', 'CheckoutController@index')->middleware('checkIfExistOrder')->name('checkout');
 
 Route::post('checkout', 'CheckoutController@requestOrder');
 
@@ -37,6 +37,8 @@ Route::get('orderstatus', 'OrdersController@showStatus');
 Auth::routes();
 
 Route::get('/home', 'AuthforCustomer\HomeController@index')->name('home');
+
+Route::put('/updateCustomer', 'AuthforCustomer\HomeController@updateCustomer');
 
 Route::get('/admins/register', 'Admin\Auth\RegisterController@showRegisterForm');
 

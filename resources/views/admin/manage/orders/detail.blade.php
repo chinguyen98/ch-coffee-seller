@@ -18,7 +18,7 @@
     </div>
     <div class="mt-5 row">
         <div class="p-2 col col-md-5 border">
-            @if($order->id_guest==null)
+            @if($order->id_customer==null)
 
             <h3 class="text-danger text-center">Khách vãng lai</h3>
             <div><span class="none-checkOrder-title mr-2">Mã đơn hàng:</span> <span class="none-checkOrder-content">{{$order->id}}</span></div>
@@ -29,6 +29,15 @@
             <div><span class="none-checkOrder-title mr-2">Thành tiền:</span> <span class="none-checkOrder-content text-danger">{{number_format($totalPrice)}} VND</span></div>
 
             @else
+
+            <h3 class="text-danger text-center">Khách đăng nhập</h3>
+            <div><span class="none-checkOrder-title mr-2">Mã đơn hàng:</span> <span class="none-checkOrder-content">{{$order->id}}</span></div>
+            <div><span class="none-checkOrder-title mr-2">Tên khách hàng:</span> <span class="none-checkOrder-content">{{$customer->name}}</span></div>
+            <div><span class="none-checkOrder-title mr-2">Địa chỉ giao hàng:</span> <span class="none-checkOrder-content">{{$customer->address}}</span></div>
+            <div><span class="none-checkOrder-title mr-2">Số điện thoại:</span> <span class="none-checkOrder-content">{{$customer->phone_number}}</span></div>
+            <div><span class="none-checkOrder-title mr-2">Email:</span> <span class="none-checkOrder-content">{{$customer->email}}</span></div>
+            <div><span class="none-checkOrder-title mr-2">Thành tiền:</span> <span class="none-checkOrder-content text-danger">{{number_format($totalPrice)}} VND</span></div>
+
 
             @endif
         </div>

@@ -455,3 +455,32 @@
   opacity: 1;
 }
 
+.userNotify{
+  width: 30em;
+  height: 7em;
+  background-image: url('/images/bg_4.jpg');
+  background-blend-mode: multiply;
+  position: fixed;
+  top: 0;
+  left: 36%;
+  opacity: 0;
+  z-index: 999;
+  transform: translateY(-3em);
+  animation-name: showUserNotify;
+  animation-duration: 3s;
+  animation-iteration-count: 2;
+  animation-direction: alternate;
+}
+
+@keyframes showUserNotify{
+  0% {
+    opacity: 0;
+    transform: translateY(-3em);
+  }
+  
+  100%{
+    opacity: 1;
+    transform: translateY(0.5em);
+  }
+}
+

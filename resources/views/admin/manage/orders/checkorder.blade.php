@@ -35,14 +35,15 @@
                     <tr>
                         <th scope="row">{{$order->id}}</th>
                         <td scope="row">{{date('d-m-Y H:i:s', strtotime($order->created_at))}}</td>
-                        <td scope="row">{{$order->guest_name}}</td>
 
                         @if($order->id_customer==null)
 
+                        <td scope="row">{{$order->guest_name}}</td>
                         <td scope="row">Khách vãng lai</td>
 
                         @else
 
+                        <td scope="row">{{$order->customer_name}}</td>
                         <td scope="row">Khách đăng nhập</td>
 
                         @endif
