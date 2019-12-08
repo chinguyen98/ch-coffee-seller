@@ -31,8 +31,43 @@
 @endif
 
 <div class="container text-center">
-    <div class="row justify-content-center">
-        <div class="card-body">
+    <div class="text-center my-3">
+        <h1>Đơn hàng của bạn:</h1>
+        <div>
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Mã đơn hàng</th>
+                        <th>Ngày mua</th>
+                        <th>Sản phẩm</th>
+                        <th>Tổng tiền</th>
+                        <th>Trạng thái đơn hàng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($orders as $order)
+
+                    <tr>
+                        <td><strong>{{$order->id}}</strong></td>
+                        <td>{{$order->created_at}}</td>
+                        <td>
+                            @foreach($order->order_details as $item)
+
+                            <p><a href="/coffees/{{$item->coffee->id}}">{{$item->coffee->name}}</a> <span class="text-danger">x{{$item->quantity}}</span></p>
+
+                            @endforeach
+                        </td>
+                        <td>{{$order->totalPrice}}</td>
+                        <td>{{$order->status->name}}</td>
+                    </tr>
+
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row justify-content-center my-5">
+        <div class="card-body border">
             @if ( Session::has('update_notify') )
 
             <h1 class="text-danger my-3">{{Session::get('update_notify')}}</h1>

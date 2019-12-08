@@ -5,6 +5,7 @@ namespace App\Http\Controllers\AuthforCustomer;
 use App\Customer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Order;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
@@ -28,7 +29,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('customers/home')->with(['title' => 'Tài khoản']);
+        $orders = Order::with('order_details')->where('id_customer', Auth::user()->id)->get();
+        foreach ($orders as $order) {
+            $totalPrice = 0;
+            foreach ($order->order_details as $item) {
+                $item['coffee']  = DB::table('coffees')->where('id', $item->id_coffee)->first(['id', 'name']);
+                $totalPrice += $item->price * $item->quantity;
+            }
+            $order["status"] = DB::table('statuses')->where('id', $order->id_status)->first(['name']);
+            $order["totalPrice"] = $totalPrice;
+        }
+        return view('customers/home')->with(['title' => 'Tài khoản', 'orders' => $orders]);
     }
 
     public function updateCustomer(Request $request)
@@ -45,7 +56,7 @@ class HomeController extends Controller
         if ($uri == route('home')) {
             return redirect('/home');
         }
-        if($uri==route('checkout')){
+        if ($uri == route('checkout')) {
             return redirect('/checkout');
         }
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class CheckOrderController extends Controller
@@ -37,7 +38,7 @@ class CheckOrderController extends Controller
     {
         $id_order = $request->input('id_order');
         if ($request->input('acceptOrder')) {
-            DB::table('orders')->where('id', $id_order)->update(['id_status' => 2]);
+            DB::table('orders')->where('id', $id_order)->update(['id_status' => 2, 'id_admin' => Auth::user()->id]);
             $request->session()->flash('flash_message', "Duyệt đơn hàng thành công!");
             return redirect('/admins/checkorder');
         } elseif ($request->input('declineOrder')) {
