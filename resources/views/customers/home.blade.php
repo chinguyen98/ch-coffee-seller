@@ -57,7 +57,7 @@
 
                             @endforeach
                         </td>
-                        <td>{{$order->totalPrice}}</td>
+                        <td>{{number_format($order->totalPrice)}} VND</td>
                         <td>{{$order->status->name}}</td>
                     </tr>
 

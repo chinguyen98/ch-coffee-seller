@@ -79,3 +79,12 @@ Route::group(['prefix' => 'admins/staffs', 'middleware' => ['isSuperAdmin', 'aut
 Route::group(['prefix' => 'carts'], function () {
     Route::get('/', 'CartsController@index');
 });
+
+Route::group(['prefix'=> 'admins/ordermanager','middleware' =>['auth:admin']], function() {
+    Route::get('/','Admin\OrderController@index');
+    Route::get('/{id}','Admin\OrderController@detail');
+});
+Route::group(['prefix'=> 'admins/customer','middleware' =>['auth:admin']], function() {
+    Route::get('/','Admin\CustomerController@index');
+    Route::get('/{id}','Admin\CustomerController@show');
+});

@@ -191,6 +191,12 @@
 	border: 1px solid red;
 }
 
+.find-model__button{
+  display: inline-block;
+  font-size: 2em;
+  transition: 0.5s all;
+}
+
 .find-model__close:hover{
 	background-color: red;
 	cursor: pointer;

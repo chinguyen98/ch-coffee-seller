@@ -3,6 +3,7 @@ const find_modal_container = document.querySelector('.find-modal-container');
 const find_model_close = document.querySelector('.find-model__close')
 const txt_find_modal = document.querySelector('#txt-find-modal');
 const matchCoffees = document.querySelector('.matchCoffees');
+const find_model_button = document.querySelector('.find-model__button');
 
 function toggleFindModal(e) {
     e.preventDefault();
@@ -46,4 +47,4 @@ function outputMatchCoffees(coffees) {
 
 btn_find_modal.addEventListener('click', toggleFindModal);
 find_model_close.addEventListener('click', toggleFindModal);
-txt_find_modal.addEventListener('input', () => getCoffees(txt_find_modal.value));
+find_model_button.addEventListener('click', () => getCoffees(txt_find_modal.value));

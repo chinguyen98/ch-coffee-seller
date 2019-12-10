@@ -96,7 +96,7 @@
 						<h5 class="mt-3">{{$coffee->name}}</h5>
 					</a>
 					<span>{{number_format($coffee->price)}} VND</span>
-					<p><a href="#" class="btn btn-primary btn-outline-primary">THÊM VÀO GIỎ</a></p>
+					<p><a href="/coffees/{{$coffee->id}}" class="btn btn-primary btn-outline-primary">XEM SẢN PHẨM</a></p>
 				</div>
 
 				@endif

@@ -42,10 +42,10 @@
     <a class="nav-link col col-md-6" href="/admins/news">
         <h3>Quản lý tin tức</h3>
     </a>
-    <a class="nav-link col col-md-6" href="#">
+    <a class="nav-link col col-md-6" href="/admins/customer">
         <h3>Quản lý khách hàng</h3>
     </a>
-    <a class="nav-link col col-md-6" href="#">
+    <a class="nav-link col col-md-6" href="/admins/ordermanager">
         <h3>Quản lý đơn hàng</h3>
     </a>
     <a class="nav-link col col-md-6" href="/admins/checkorder">

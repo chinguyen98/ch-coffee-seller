@@ -14,7 +14,9 @@ class OrdersController extends Controller
 
     public function showStatus(Request $request)
     {
-        $status = DB::table('orders')->where('id', $request->input('id_order'))->first(['id_status']);
+        $status = null;
+        if (is_numeric($request->input('id_order')))
+            $status = DB::table('orders')->where('id', $request->input('id_order'))->first(['id_status']);
         return view('carts/status')->with(['status' => $status, 'id' => $request->input('id_order')]);
     }
 }
