@@ -18,7 +18,7 @@
 	<div class="one-half img" style="background-image: url(images/about.jpg);"></div>
 	<div class="one-half ftco-animate">
 		<div class="overlap">
-			<div class="heading-section ftco-animate ">
+			<div class="heading-section ftco-animate text-center">
 				<span class="subheading aquarelleFont">Danh mục</span>
 				<h2 class="my-4">SẢN PHẨM</h2>
 			</div>

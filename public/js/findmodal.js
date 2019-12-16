@@ -45,6 +45,13 @@ function outputMatchCoffees(coffees) {
     }
 }
 
+function entertoSearch(e) {
+    if (e.keyCode == 13) {
+        getCoffees(this.value);
+    }
+}
+
 btn_find_modal.addEventListener('click', toggleFindModal);
 find_model_close.addEventListener('click', toggleFindModal);
 find_model_button.addEventListener('click', () => getCoffees(txt_find_modal.value));
+txt_find_modal.addEventListener('keypress', entertoSearch);

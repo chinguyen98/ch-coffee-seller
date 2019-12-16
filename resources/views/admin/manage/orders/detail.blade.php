@@ -44,10 +44,10 @@
         <div class="p-2 col col-md-7 border">
             <h3 class="text-info text-center">Đơn hàng:</h3>
             <div class="mt-2">
-                @foreach($order->order_details as $item)
+                @foreach($order_details as $item)
 
                 <div class="d-flex flex-row justify-content-between flex-wrap">
-                    <p>{{$item->coffee_name->name}}</p>
+                    <p>{{$item->coffee->name}}</p>
                     <div class="d-flex flex-row justify-content-between">
                         <p>{{number_format($item->price)}} VND</p>
                         <p class="ml-5">x {{$item->quantity}}</p>

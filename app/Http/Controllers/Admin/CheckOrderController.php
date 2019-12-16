@@ -24,14 +24,15 @@ class CheckOrderController extends Controller
 
     public function show($id)
     {
-        $order = Order::with('customer')->with('order_details')->find($id);
+        $order = DB::table('orders')->where('id', $id)->first();
+        $order_details = DB::table('order_details')->where('id_order', $id)->get();
         $customer = DB::table('customers')->where('id', $order->id_customer)->first();
         $totalPrice = 0;
-        foreach ($order->order_details as $item) {
-            $item['coffee_name'] = DB::table('coffees')->where('id', $item->id_coffee)->first(['name']);
+        foreach ($order_details as $item) {
+            $item->coffee = DB::table('coffees')->where('id', $item->id_coffee)->first(['name']);
             $totalPrice += $item->price * $item->quantity;
         }
-        return view('admin/manage/orders/detail')->with(['order' => $order, 'totalPrice' => $totalPrice, 'customer' => $customer]);
+        return view('admin/manage/orders/detail')->with(['order' => $order, 'totalPrice' => $totalPrice, 'customer' => $customer, 'order_details' => $order_details]);
     }
 
     public function handleOrder(Request $request)
