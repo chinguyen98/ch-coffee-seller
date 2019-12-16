@@ -87,7 +87,8 @@ class CoffeesController extends Controller
 		$coffee_type = DB::table('coffee_types')->where('id', $coffee->id_type)->first();
 		$unit = DB::table('units')->where('id', $coffee->id_unit)->first();
 		$relateBrandCoffees = DB::table('coffees')->where('id_brand', $brand->id)->get()->random(5);
-		return view('coffees/coffee')->with(['title' => $coffee->name, 'coffeeactive' => 'active', 'coffee' => $coffee, 'brand' => $brand, 'coffee_type' => $coffee_type, 'unit' => $unit, 'relateBrandCoffees' => $relateBrandCoffees]
+		return view('coffees/coffee')->with(
+			['title' => $coffee->name, 'coffeeactive' => 'active', 'coffee' => $coffee, 'brand' => $brand, 'coffee_type' => $coffee_type, 'unit' => $unit, 'relateBrandCoffees' => $relateBrandCoffees]
 		);
 	}
 

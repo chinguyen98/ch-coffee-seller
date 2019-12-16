@@ -105,28 +105,5 @@
 			</div>
 		</div>
 		@endforeach
-		<!--
-		<div class="dmsp-main-container">
-			<h1>Cà phê hoà tan</h1>
-			<div class="pt-3 dmsp-main-container__list d-lg-flex">
-				<div class="dmsp-main-container__item col-sm-12 col col-md-3 m-1 p-1 d-sm-flex d-lg-flex flex-column justify-content-center align-items-center">
-					<a href="http://"><img src="images/menu-1.jpg" alt=""></a>
-					<h4 class="mt-3">Ca phe</h4>
-				</div>
-				<div class="dmsp-main-container__item col col-md-3 m-1 p-1 d-lg-flex flex-column justify-content-center align-items-center">
-					<a href="http://"><img src="images/menu-1.jpg" alt=""></a>
-					<h4 class="mt-3">Ca phe</h4>
-				</div>
-				<div class="dmsp-main-container__item col col-md-3 m-1 p-1 d-lg-flex flex-column justify-content-center align-items-center">
-					<a href="http://"><img src="images/menu-1.jpg" alt=""></a>
-					<h4 class="mt-3">Ca phe</h4>
-				</div>
-				<div class="dmsp-main-container__item col col-md-3 m-1 p-1 d-lg-flex flex-column justify-content-center align-items-center">
-					<a href="http://"><img src="images/menu-1.jpg" alt=""></a>
-					<h4 class="mt-3">Ca phe</h4>
-				</div>
-			</div>
-		</div>
--->
 	</div>
 </section>

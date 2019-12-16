@@ -174,13 +174,13 @@
 	left:0;
 	transform: translateY(30rem);
   transition: all 0.5s;
-	z-index: -696969;
+	z-index: -99999999;
 }
 
 .active-modal{
 	opacity: 0.95;
   transform: none;
-  z-index: 696969;
+  z-index: 99999999;
 }
 
 .find-model__close{

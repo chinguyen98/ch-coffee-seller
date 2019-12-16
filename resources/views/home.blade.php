@@ -247,7 +247,7 @@
 					<div class="text text-center pt-4">
 						<h3><a href="#">Cà phê chồn WEASEL 250g</a></h3>
 						<p class="price"><span>17.000.000 VND</span></p>
-						<p><a href="#" class="btn btn-primary btn-outline-primary">THÊM VÀO GIỎ</a></p>
+						<p><a href="/coffees/13" class="btn btn-primary btn-outline-primary">THÊM VÀO GIỎ</a></p>
 					</div>
 				</div>
 			</div>
@@ -382,7 +382,7 @@
 											<div class="text">
 												<h3><a href="/coffees/{{$coffee->id}}">{{$coffee->name}}</a></h3>
 												<p class="price"><span>{{number_format($coffee->price)}} VND</span></p>
-												<p><a href="#" class="btn btn-primary btn-outline-primary">THÊM VÀO GIỎ</a></p>
+												<p><a href="/coffees/{{$coffee->id}}" class="btn btn-primary btn-outline-primary">THÊM VÀO GIỎ</a></p>
 											</div>
 										</div>
 									</div>
@@ -413,7 +413,7 @@
 											<div class="text">
 												<h3><a href="/coffees/{{$coffee->id}}">{{$coffee->name}}</a></h3>
 												<p class="price"><span>{{number_format($coffee->price)}} VND</span></p>
-												<p><a href="#" class="btn btn-primary btn-outline-primary">THÊM VÀO GIỎ</a></p>
+												<p><a href="/coffees/{{$coffee->id}}" class="btn btn-primary btn-outline-primary">THÊM VÀO GIỎ</a></p>
 											</div>
 										</div>
 									</div>

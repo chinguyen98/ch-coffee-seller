@@ -12,6 +12,11 @@ class OrderController extends Controller
     public function index()
     {
         $orders = DB::table('orders')->where('id_status', 2)->get();
+        foreach ($orders as $order) {
+            if ($order->id_customer != null) {
+                $order->customer = DB::table('customers')->where('id', $order->id_customer)->first(['name']);
+            }
+        }
         return view('admin/manage/orders/index')->with(['orders' => $orders]);
     }
     public function detail($id)
@@ -22,12 +27,11 @@ class OrderController extends Controller
         if ($order->id_customer != null) {
             $customer = DB::table('customers')->where('id', $order->id_customer)->first();
         }
-        $order_detail =DB::table('order_details')->where('id_order',$id)->get();
-        foreach($order_detail as $item)
-        {
-            $item->coffee= DB::table('coffees')->where('id',$item->id_coffee)->first(['name']);
+        $order_detail = DB::table('order_details')->where('id_order', $id)->get();
+        foreach ($order_detail as $item) {
+            $item->coffee = DB::table('coffees')->where('id', $item->id_coffee)->first(['name']);
             $total += $item->price * $item->quantity;
         }
-        return view('admin/manage/orders/detailcheck')->with(['order' => $order, 'customer' => $customer,'orderdetail' =>$order_detail, 'totalprice'=>$total]);
+        return view('admin/manage/orders/detailcheck')->with(['order' => $order, 'customer' => $customer, 'orderdetail' => $order_detail, 'totalprice' => $total]);
     }
 }

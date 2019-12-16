@@ -40,6 +40,8 @@ Route::get('/home', 'AuthforCustomer\HomeController@index')->name('home');
 
 Route::put('/updateCustomer', 'AuthforCustomer\HomeController@updateCustomer');
 
+Route::put('/changeCustomerPassword', 'AuthforCustomer\HomeController@changeCustomerPassword');
+
 Route::get('/admins/register', 'Admin\Auth\RegisterController@showRegisterForm');
 
 Route::post('/admins/register', 'Admin\Auth\RegisterController@register')->name('admin.register');
@@ -80,11 +82,11 @@ Route::group(['prefix' => 'carts'], function () {
     Route::get('/', 'CartsController@index');
 });
 
-Route::group(['prefix'=> 'admins/ordermanager','middleware' =>['auth:admin']], function() {
-    Route::get('/','Admin\OrderController@index');
-    Route::get('/{id}','Admin\OrderController@detail');
+Route::group(['prefix' => 'admins/ordermanager', 'middleware' => ['auth:admin']], function () {
+    Route::get('/', 'Admin\OrderController@index');
+    Route::get('/{id}', 'Admin\OrderController@detail');
 });
-Route::group(['prefix'=> 'admins/customer','middleware' =>['auth:admin']], function() {
-    Route::get('/','Admin\CustomerController@index');
-    Route::get('/{id}','Admin\CustomerController@show');
+Route::group(['prefix' => 'admins/customer', 'middleware' => ['auth:admin']], function () {
+    Route::get('/', 'Admin\CustomerController@index');
+    Route::get('/{id}', 'Admin\CustomerController@show');
 });
