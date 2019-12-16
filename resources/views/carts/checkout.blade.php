@@ -27,7 +27,7 @@
 </div>
 
 <div class="checkout-container container text-center mt-3">
-    <div class="progress my-3" style="height: 3em;v ">
+    <div class="progress my-3" style="height: 3em; ">
         <div class="progress-bar border bg-danger progress-phase-1" style="width:50%">
             Nhập thông tin đăng nhập
         </div>
@@ -91,13 +91,13 @@
         </div>
         <h1 class="my-3">Hoặc đăng nhập để nhận ưu đãi</h1>
         <div>Đã có tài khoản: <a class="btn btn-primary mb-3" href="/login">
-                <h4>Đăng nhập</h4>
+                <h4 class="d-inline">Đăng nhập</h4>
             </a></div>
         <div>Chưa có tài khoản: <a class="btn btn-primary" href="/register">
-                <h4>Đăng ký</h4>
+                <h4 class="d-inline">Đăng ký</h4>
             </a></div>
         <button class="pass-phase-2 btn btn-info my-5">
-            <h3>Bước kế tiếp</h3>
+            <h3 class="d-inline">Bước kế tiếp</h3>
         </button>
     </div>
 
@@ -110,10 +110,10 @@
 
                 </div>
                 <a class="btn btn-primary mt-2" href="/coffees">
-                    <h2>Tiếp tục mua sản phẩm</h2>
+                    <h2 class="d-inline">Tiếp tục mua sản phẩm</h2>
                 </a>
                 <a class="btn btn-info mt-2" href="/carts">
-                    <h2>Xem lại chi tiết giỏ hàng</h2>
+                    <h2 class="d-inline">Xem lại chi tiết giỏ hàng</h2>
                 </a>
             </div>
             <div class="col col-md-6 ml-3">
@@ -127,7 +127,7 @@
                 </div>
 
                 <button class="btn btn-secondary my-3 pass-phase-1">
-                    <h2>Sửa thông tin</h2>
+                    <h2 class="d-inline">Sửa thông tin</h2>
                 </button>
 
                 <div class="border text-left mt-3">
@@ -454,10 +454,10 @@
 
                 </div>
                 <a class="btn btn-primary mt-2" href="/coffees">
-                    <h2>Tiếp tục mua sản phẩm</h2>
+                    <h2 class="d-inline">Tiếp tục mua sản phẩm</h2>
                 </a>
                 <a class="btn btn-info mt-2" href="/carts">
-                    <h2>Xem lại chi tiết giỏ hàng</h2>
+                    <h2 class="d-inline">Xem lại chi tiết giỏ hàng</h2>
                 </a>
             </div>
             <div class="col col-md-6 ml-3">
@@ -470,7 +470,7 @@
                 </div>
 
                 <button class="btn btn-secondary mt-3 showEditForm">
-                    <h3>Sửa thông tin</h3>
+                    <h3 class="d-inline">Sửa thông tin</h3>
                 </button>
 
                 <div class="border text-left mt-3">

@@ -29,6 +29,32 @@ const getCartItem = async () => {
         });
 }
 
+function renderCart(cartList) {
+    const html = cartList.map(item =>
+        `
+        <div class="col-md-12 my-2 d-flex flex-row justify-content-between">
+            <div class="d-flex flex-row align-items-center">
+                <div class="cart-image-container mr-4"><a href="/coffees/${item.id}"><img class="cart-image" src="images/coffees/${item.image}"></a></div>
+                <div>
+                    <a href="/coffees/${item.id}"><h5>${item.name}</h5></a>
+                    <button class="btn btn-danger btn-delete-cart-item" onclick="deleteItem(${item.id})">Xoá</button>
+                </div>
+            </div>
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <div>
+                    <h5>Giá: ${String(item.price).replace(/(.)(?=(\d{3})+$)/g, '$1,')}</h5>
+                </div>
+                <div class="d-flex flex-row align-items-center">
+                    <span data-des="${item.id}" onclick="desCartQuantity(${item.id})" class="quantity-updown text-center">-</span>
+                    <input data-price="${item.price}" data-val="${item.id}" onBlur="valCartQuantity(${item.id})" style="width:3em" class="text-center" type="text" name="quantity" class="quantity" value="${localStorage.getItem(item.id)}" />
+                    <span data-inc="${item.id}" onclick="incCartQuantity(${item.id})" class="quantity-updown text-center">+</span>
+                </div>
+            </div>
+        </div>
+    `).join('');
+    cartComponent.innerHTML = html;
+}
+
 function renderPriceSum(cartList) {
     let sum = cartList.reduce((total, item) => {
         return total + parseInt(localStorage.getItem(item.id)) * item.price;
@@ -81,32 +107,6 @@ function incCartQuantity(id) {
     localStorage.setItem(id, getQuantity);
     valueInput.value = getQuantity;
     changeToTalPrice(id);
-}
-
-function renderCart(cartList) {
-    const html = cartList.map(item =>
-        `
-        <div class="col-md-12 my-2 d-flex flex-row justify-content-between">
-            <div class="d-flex flex-row align-items-center">
-                <div class="cart-image-container mr-4"><a href="/coffees/${item.id}"><img class="cart-image" src="images/coffees/${item.image}"></a></div>
-                <div>
-                    <a href="/coffees/${item.id}"><h5>${item.name}</h5></a>
-                    <button class="btn btn-danger btn-delete-cart-item" onclick="deleteItem(${item.id})">Xoá</button>
-                </div>
-            </div>
-            <div class="d-flex flex-column justify-content-center align-items-center">
-                <div>
-                    <h5>Giá: ${String(item.price).replace(/(.)(?=(\d{3})+$)/g, '$1,')}</h5>
-                </div>
-                <div class="d-flex flex-row align-items-center">
-                    <span data-des="${item.id}" onclick="desCartQuantity(${item.id})" class="quantity-updown text-center">-</span>
-                    <input data-price="${item.price}" data-val="${item.id}" onBlur="valCartQuantity(${item.id})" style="width:3em" class="text-center" type="text" name="quantity" class="quantity" value="${localStorage.getItem(item.id)}" />
-                    <span data-inc="${item.id}" onclick="incCartQuantity(${item.id})" class="quantity-updown text-center">+</span>
-                </div>
-            </div>
-        </div>
-    `).join('');
-    cartComponent.innerHTML = html;
 }
 
 window.addEventListener('load', getCartItem);

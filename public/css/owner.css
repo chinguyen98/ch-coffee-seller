@@ -329,7 +329,7 @@
   position: fixed;
   z-index: 9999;
   margin-left: 35%;
-  transform: translateY(-8em);
+  transform: translateX(-30em);
   opacity: 0;
   animation-name: showPopUpFlashMessage;
   animation-iteration-count: 2;
@@ -339,16 +339,16 @@
 
 @keyframes showPopUpFlashMessage{
   0%  {
-    transform: translateY(-8em);
+    transform: translateX(-30em);
     opacity: 0;
   }
   50%{
-    transform: translateY(-4em);
+    transform: translateX(-4em);
     opacity: 1;
   }
   100%{
     opacity: 1;
-    transform: translateY(-4.5em);
+    transform: translateX(-4.5em);
   }
 }
 

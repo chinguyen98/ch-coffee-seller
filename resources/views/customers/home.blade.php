@@ -177,9 +177,10 @@
                             <strong class="phone_err">{{ $message }}</strong>
                         </span>
                         @enderror
+                        <strong class="phone_err text-danger"></strong>
                     </div>
+                    
                 </div>
-                <strong class="phone_err"></strong>
 
                 <div class="form-group row mb-0">
                     <div class="col-md-6 offset-md-3 mt-3">

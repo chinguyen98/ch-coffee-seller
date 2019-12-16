@@ -33,7 +33,8 @@ class HomeController extends Controller
     {
         $orders = Order::with('order_details')->where('id_customer', Auth::user()->id)->orderBy('created_at', 'desc')->get();
         foreach ($orders as $order) {
-            $totalPrice = 0;
+            $shipping_info = DB::table('shipping_infos')->where('id', $order->id_shipping_info)->first(['price']);
+            $totalPrice = $shipping_info->price;
             foreach ($order->order_details as $item) {
                 $item['coffee']  = DB::table('coffees')->where('id', $item->id_coffee)->first(['id', 'name']);
                 $totalPrice += $item->price * $item->quantity;

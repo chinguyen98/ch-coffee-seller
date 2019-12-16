@@ -8,4 +8,5 @@ return [
         'string' => 'Vui lòng nhập mật khẩu chứa ít nhất :min kí tự',
         'array' => 'The :attribute must have at least :min items.',
     ],
+    'numeric' => 'Vui lòng nhập đúng định dạng số điện thoại!',
 ];

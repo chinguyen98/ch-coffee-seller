@@ -27,7 +27,8 @@ class CheckOrderController extends Controller
         $order = DB::table('orders')->where('id', $id)->first();
         $order_details = DB::table('order_details')->where('id_order', $id)->get();
         $customer = DB::table('customers')->where('id', $order->id_customer)->first();
-        $totalPrice = 0;
+        $shipping_info = DB::table('shipping_infos')->where('id', $order->id_shipping_info)->first(['price']);
+        $totalPrice = $shipping_info->price;
         foreach ($order_details as $item) {
             $item->coffee = DB::table('coffees')->where('id', $item->id_coffee)->first(['name']);
             $totalPrice += $item->price * $item->quantity;
