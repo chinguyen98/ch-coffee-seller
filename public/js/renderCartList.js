@@ -7,13 +7,14 @@ const totalSumContainer = document.querySelector('.total-sum-container');
 const getCartItem = async () => {
     const cart = Object.keys(localStorage).join(',');
     if (localStorage.length == 0) {
+        cartComponent.innerHTML = "";
+        cartComponent.classList.add('cart-close');
+        totalSumContainer.classList.add('cart-close');
         const html = `
             <h1 class="text-center">Không có sản phẩm nào trong giỏ hàng</h1>
-            <a class="btn btn-primary btn-lg" href="/coffees"><h3>Tiếp tục mua sắm</h3></a>
+            <a class="btn btn-primary btn-lg" href="/coffees"><h3 class="d-inline">Tiếp tục mua sắm</h3></a>
         `;
         showNoCart.innerHTML = html;
-        cartContainer.classList.add('cart-close');
-        totalSumContainer.classList.add('cart-close');
         return;
     }
     showNoCart.innerHTML = "";
@@ -101,7 +102,7 @@ function valCartQuantity(id) {
 }
 
 function incCartQuantity(id) {
-    let getQuantity = parseInt(localStorage.getItem(id)); 
+    let getQuantity = parseInt(localStorage.getItem(id));
     let valueInput = document.querySelector(`input[data-val="${id}"]`);
     getQuantity = getQuantity + 1;
     localStorage.setItem(id, getQuantity);

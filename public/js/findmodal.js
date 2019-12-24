@@ -41,6 +41,7 @@ function outputMatchCoffees(coffees) {
 		    </div>
             `
         ).join('');
+        txt_find_modal.value = "";
         matchCoffees.innerHTML = html;
     }
 }
