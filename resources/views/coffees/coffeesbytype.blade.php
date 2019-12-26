@@ -15,7 +15,9 @@
 </section>
 
 <div class="dmsp-main-container mt-3">
+    <h1 class="text-center">Số sản phẩm tìm được là: {{count($coffees)}}</h1>
     <div class="pt-3 dmsp-main-container__list d-lg-flex flex-wrap">
+
         @foreach($coffees as $coffee)
 
         <div class="dmsp-main-container__item col-sm-12 col col-md-3 pt-3 text-center  d-sm-flex d-lg-flex flex-column justify-content-center align-items-center">
@@ -24,7 +26,7 @@
                 <h5 class="mt-3">{{$coffee->name}}</h5>
             </a>
             <span>{{number_format($coffee->price)}} VND</span>
-            <p><a href="#" class="btn btn-primary btn-outline-primary">THÊM VÀO GIỎ</a></p>
+            <p><a href="/coffees/{{$coffee->id}}" class="btn btn-primary btn-outline-primary">XEM SẢN PHẨM</a></p>
         </div>
 
         @endforeach

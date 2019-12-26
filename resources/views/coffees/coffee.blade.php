@@ -62,6 +62,16 @@
 			<div class="relatedCoffee-container d-flex flex-column">
 				@foreach($relateBrandCoffees as $item)
 
+				@if($loop->index==5)
+
+				@break
+
+				@elseif($item->id==$coffee->id)
+
+				@continue
+
+				@else
+
 				<div class="relatedCoffee-container__item pb-3 col col-12 d-flex flex-row">
 					<a href="/coffees/{{$item->id}}"><img class="mr-3" src="{{asset('images/coffees/' . $item->image)}}" alt=""></a>
 					<div>
@@ -71,6 +81,8 @@
 						<p>{{number_format($item->price)}} VND</p>
 					</div>
 				</div>
+
+				@endif
 
 				@endforeach
 			</div>

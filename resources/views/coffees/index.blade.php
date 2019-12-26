@@ -78,7 +78,7 @@
 		<div class="dmsp-main-container mt-3">
 			<div class="dmsp-main-container__name">
 				<a href="/coffeesbytype?type={{$type->id}}">
-					<h2 class="d-inline">{{$type->name}}</h2>
+					<h2>{{$type->name}}</h2>
 				</a>
 			</div>
 			<div class="pt-3 dmsp-main-container__list d-lg-flex flex-wrap">
