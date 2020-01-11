@@ -67,7 +67,8 @@
 			<script>
 				const quantityOfCart = document.querySelector('#cartNum');
 				const cartNotify = document.querySelector('.cartNotify');
-				const closeCartBtn = document.querySelector('.closeCart');
+				const cartNotifyClose = document.querySelector('.cartNotify__close');
+				const cartNotifyCoffee=document.querySelector('.cartNotify__coffee');
 
 				quantityOfCart.innerHTML = localStorage.length;
 
@@ -75,7 +76,7 @@
 					cartNotify.classList.remove('cartNotify-show');
 				}
 
-				closeCartBtn.addEventListener('click', closeCartNotify);
+				cartNotifyClose.addEventListener('click', closeCartNotify);
 			</script>
 		</div>
 

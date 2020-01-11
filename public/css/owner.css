@@ -71,21 +71,22 @@
   transition: 0.5s all;
 }
 
-.dmsp-main-container__name h2{
+.dmsp-main-container__name span{
   transition: 0.5s all;
   text-transform: uppercase;
+  font-size: 2em;
+}
+
+.dmsp-main-container__name:hover *{
+  color: red;
 }
 
 .dmsp-main-container__name:hover{
   background-color: rgba(0, 0, 0) !important;
 }
 
-.dmsp-main-container__name:hover h2{
-  color:red;
-}
-
 .dmsp-main-container__item img{
-  widows: 12em;
+  width: 12em;
   height: 12em;
 }
 
@@ -366,7 +367,7 @@
 .cartNotify{
   text-align: center;
   width: 20em;
-  height: 7em;
+  height: 8em;
   background-color: whitesmoke;
   position: absolute;
   right:5em;
@@ -380,9 +381,19 @@
   color:black;
 }
 
-.cartNotify span:hover{
-  color:red;
+.cartNotify__close{
+  position: absolute;
+  right: 1em;
+  top:0;
+  font-size: 1.5em;
+}
+
+.cartNotify__close:hover{
   cursor: pointer;
+}
+
+.cartNotify__close:hover *{
+  color:black;
 }
 
 .cartNotify-show{

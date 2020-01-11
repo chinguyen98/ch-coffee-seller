@@ -34,7 +34,8 @@
         <li class="nav-item"><a class="nav-link"><i id="btn-find" class="fas fa-search fa-2x"></i></a></li>
         <li class="nav-item cart"><a href="/carts" class="nav-link"><span class="icon icon-shopping_cart"></span><span class="bag d-flex justify-content-center align-items-center"><small id="cartNum">0</small></span></a></li>
         <div class="cartNotify p-2">
-          <p>Thêm vào giỏ hàng thành công <span title="Đóng" class="closeCart ml-3">X</span></p>
+          <span>THÔNG BÁO:</span> <span title="Đóng" class="cartNotify__close text-danger">X</span></<span>
+          <p><span class="cartNotify__coffee">Thêm vào giỏ hàng thành công</span></p>
           <a href="/carts" class="btn btn-danger">Xem giỏ hàng và thanh toán</a>
         </div>
       </ul>

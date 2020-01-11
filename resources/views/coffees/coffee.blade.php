@@ -103,6 +103,7 @@
 	const btnquantitydesc = document.querySelector('#btn-quantity-desc');
 
 	function addToCart(e) {
+		cartNotify.classList.remove('cartNotify-show');
 		let inputQuantity = quantity.value;
 		if (inputQuantity <= 0) {
 			return;
@@ -118,6 +119,7 @@
 			getQuantity = getQuantity + parseInt(inputQuantity);
 			localStorage.setItem(id, getQuantity);
 		}
+		cartNotifyCoffee.innerHTML = `Đã thêm ${inputQuantity} sản phẩm vào giỏ hàng!`;
 		cartNotify.classList.add('cartNotify-show');
 		quantityOfCart.innerHTML = localStorage.length;
 	}

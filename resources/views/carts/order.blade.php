@@ -29,7 +29,7 @@
 
     @endif
 
-    <h1>Vui lòng nhập mã để theo dõi đơn hàng:</h1>
+    <h1>Vui lòng nhập mã đơn hàng để xem trạng thái:</h1>
     <form action="/orderstatus" method="get">
         Mã đơn hàng: <input type="text" name="id_order" class="ml-4">
         <input class="btn btn-primary" type="submit" value="Kiểm tra">

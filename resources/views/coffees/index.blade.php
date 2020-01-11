@@ -76,11 +76,11 @@
 
 		@foreach($menu_types as $type)
 		<div class="dmsp-main-container mt-3">
-			<div class="dmsp-main-container__name">
-				<a href="/coffeesbytype?type={{$type->id}}">
-					<h2>{{$type->name}}</h2>
-				</a>
-			</div>
+			<a href="/coffeesbytype?type={{$type->id}}">
+				<div class="dmsp-main-container__name text-center">
+					<span>{{$type->name}}</span>
+				</div>
+			</a>
 			<div class="pt-3 dmsp-main-container__list d-lg-flex flex-wrap">
 				@foreach($type->coffees as $key=>$coffee)
 

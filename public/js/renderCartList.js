@@ -47,7 +47,7 @@ function renderCart(cartList) {
                 </div>
                 <div class="d-flex flex-row align-items-center">
                     <span data-des="${item.id}" onclick="desCartQuantity(${item.id})" class="quantity-updown text-center">-</span>
-                    <input data-price="${item.price}" data-val="${item.id}" onBlur="valCartQuantity(${item.id})" style="width:3em" class="text-center" type="text" name="quantity" class="quantity" value="${localStorage.getItem(item.id)}" />
+                    <input data-price="${item.price}" data-val="${item.id}" onChange="valCartQuantity(${item.id})" style="width:3em" class="text-center" type="text" name="quantity" class="quantity" value="${localStorage.getItem(item.id)}" />
                     <span data-inc="${item.id}" onclick="incCartQuantity(${item.id})" class="quantity-updown text-center">+</span>
                 </div>
             </div>

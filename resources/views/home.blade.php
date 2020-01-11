@@ -90,7 +90,7 @@
 				<span class="subheading aquarelleFont">Khơi Nguồn</span>
 				<h2 class="my-4">SÁNG TẠO</h2>
 			</div>
-			<div class="slogan sloganknst">
+			<div class="slogan sloganknst text-justify">
 				<p>Cà phê, không sặc sỡ để gây sự chú ý, Không ngọt ngào để "xu nịnh cảm xúc" Mà nó tồn tại để mang lại cho chúng ta một kho tàng. Cần khám phá một người dẫn lối để đi đến sự thanh tịnh.</p>
 			</div>
 		</div>
