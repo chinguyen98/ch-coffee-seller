@@ -15,7 +15,7 @@
 </section>
 
 <div class="dmsp-main-container mt-3">
-    <h1 class="text-center">Số sản phẩm tìm được là: {{count($coffees)}}</h1>
+    <h1 class="text-center">Đã tìm thấy {{count($coffees)}} sản phẩm</h1>
     <div class="pt-3 dmsp-main-container__list d-lg-flex flex-wrap">
 
         @foreach($coffees as $coffee)

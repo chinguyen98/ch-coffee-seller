@@ -4,6 +4,7 @@ const find_model_close = document.querySelector('.find-model__close')
 const txt_find_modal = document.querySelector('#txt-find-modal');
 const matchCoffees = document.querySelector('.matchCoffees');
 const find_model_button = document.querySelector('.find-model__button');
+const matchCount = document.querySelector('.matchCount');
 
 function toggleFindModal(e) {
     e.preventDefault();
@@ -42,7 +43,11 @@ function outputMatchCoffees(coffees) {
             `
         ).join('');
         txt_find_modal.value = "";
+        matchCount.innerHTML = `<h1>Đã tìm thấy ${coffees.length} sản phẩm</h1>`;
         matchCoffees.innerHTML = html;
+    } else {
+        matchCount.innerHTML = `<h1>Không tìm thấy sản phẩm nào!</h1>`;
+        matchCoffees.innerHTML = "";
     }
 }
 

@@ -7,7 +7,8 @@
 		<div class="col col-2 col-md-1 text-center find-model__close mt-2"><span>X</span></div>
 	</div>
 	<hr>
+	<div class="text-center matchCount"></div>
 	<div class="matchCoffees d-flex flex-sm-column flex-wrap flex-md-row text-center ">
-		
+
 	</div>
 </div>
