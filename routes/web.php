@@ -90,3 +90,6 @@ Route::group(['prefix' => 'admins/customer', 'middleware' => ['auth:admin']], fu
     Route::get('/', 'Admin\CustomerController@index');
     Route::get('/{id}', 'Admin\CustomerController@show');
 });
+
+
+Route::get('/test', 'TestController@test');

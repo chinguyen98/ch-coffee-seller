@@ -8,12 +8,12 @@ class Coffee extends Model
 {
     public function brand()
     {
-        return $this->belongsTo('App\Brand');
+        return $this->belongsTo(Brand::class, 'id_brand');
     }
 
     public function coffee_type()
     {
-        return $this->belongsTo('App\CoffeeType');
+        return $this->belongsTo(CoffeeType::class, 'id_type');
     }
 
     public function unit()

@@ -8,6 +8,6 @@ class CoffeeType extends Model
 {
     public function coffees()
     {
-        return $this->hasMany('App\Coffee', 'id_type', 'id');
+        return $this->hasMany(Coffee::class, 'id_type', 'id');
     }
 }
