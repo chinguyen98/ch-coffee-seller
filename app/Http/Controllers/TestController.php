@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
-    public function test()
+    public function test(Request $request)
     {
         // $brand = Coffee::find(10)->brand;
         // return $brand->name;
@@ -39,6 +39,13 @@ class TestController extends Controller
         // }
 
         // $coffee = Brand::find(1)->coffees()->where('id', 4)->first();
-        // echo $coffee->name;
+        // echo $coffee->name;  
+
+        //echo $request->url();
+        //->http://127.0.0.1:8000/test
+
+        //echo $request->fullUrl();
+
+        //Old Input
     }
 }
