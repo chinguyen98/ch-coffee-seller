@@ -2,10 +2,10 @@ const previewImg = document.querySelector('#previewImg');
 const fileImg = document.querySelector('input[name="image"]');
 
 function changePreviewImage(e) {
-    let file = fileImg.files[0];
+    let file = e.srcElement.files[0];//or fileImg.files[0]
     if (file.type.match("image.*")) {
         let reader = new FileReader();
-        reader.readAsDataURL(e.srcElement.files[0]);
+        reader.readAsDataURL(file);
         reader.onload = () => {
             var fileContent = reader.result;
             previewImg.src = fileContent;

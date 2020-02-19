@@ -116,7 +116,6 @@
     </div>
 </div>
 
-<script src="{{asset('js/validCoffeeSubmit.js')}}"></script>
 <script>
     const name = document.querySelector('input[name=name]');
     const price = document.querySelector('input[name=price]');
