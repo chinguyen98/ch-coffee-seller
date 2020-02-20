@@ -34,7 +34,7 @@
             <tr>
                 <th scope="row">{{$coffee->id}}</th>
                 <div>
-                    <td><a href="/admins/coffees/{{$coffee->id}}">{{$coffee->name}}</a></td>
+                    <td><a class="coffee-name" data-id="{{$coffee->id}}" href="/admins/coffees/{{$coffee->id}}">{{$coffee->name}}</a></td>
                 </div>
                 
             </tr>
