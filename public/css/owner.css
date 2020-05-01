@@ -2,12 +2,12 @@
 
 @font-face{
   font-family: UTMBeautifulCaps;
-  src: url('fonts/owner/UTMBeautifulCaps.ttf');
+  src: url('/fonts/owner/UTMBeautifulCaps.ttf');
 }
 
 @font-face{
   font-family: UTMAquarelle;
-  src: url('fonts/owner/UTMAquarelle.ttf');
+  src: url('/fonts/owner/UTMAquarelle.ttf');
 }
 
 .slogan{

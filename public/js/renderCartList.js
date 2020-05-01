@@ -5,8 +5,8 @@ const cartContainer = document.querySelector('.cart-container');
 const totalSumContainer = document.querySelector('.total-sum-container');
 
 const getCartItem = async () => {
-    const cart = Object.keys(localStorage).join(',');
-    if (localStorage.length == 0) {
+    const cartStorage = JSON.parse(localStorage.getItem('cart'));
+    if (cartStorage === null || cartStorage.length === 0) {
         cartComponent.innerHTML = "";
         cartComponent.classList.add('cart-close');
         totalSumContainer.classList.add('cart-close');
@@ -17,20 +17,22 @@ const getCartItem = async () => {
         showNoCart.innerHTML = html;
         return;
     }
+
+    const cartIdList = cartStorage.map(item => item.id).join(',');
     showNoCart.innerHTML = "";
-    await fetch(`http://127.0.0.1:8000/api/carts/${cart}`)
+    await fetch(`http://127.0.0.1:8000/api/carts/${cartIdList}`)
         .then(res => {
             return res.json();
         }).then(cartAsJson => {
             let cartList = cartAsJson;
-            renderCart(cartList);
-            renderPriceSum(cartList);
+            renderCart(cartList, cartStorage);
+            renderPriceSum(cartList, cartStorage);
         }).catch(err => {
             console.log('Error when get API');
         });
 }
 
-function renderCart(cartList) {
+function renderCart(cartList, cartStorage) {
     const html = cartList.map(item =>
         `
         <div class="col-md-12 my-2 d-flex flex-row justify-content-between">
@@ -47,7 +49,7 @@ function renderCart(cartList) {
                 </div>
                 <div class="d-flex flex-row align-items-center">
                     <span data-des="${item.id}" onclick="desCartQuantity(${item.id})" class="quantity-updown text-center">-</span>
-                    <input data-price="${item.price}" data-val="${item.id}" onChange="valCartQuantity(${item.id})" style="width:3em" class="text-center" type="text" name="quantity" class="quantity" value="${localStorage.getItem(item.id)}" />
+                    <input data-price="${item.price}" data-val="${item.id}" onChange="valCartQuantity(${item.id})" style="width:3em" class="text-center" type="text" name="quantity" class="quantity" value="${cartStorage.find(el => el.id === item.id).qty}" />
                     <span data-inc="${item.id}" onclick="incCartQuantity(${item.id})" class="quantity-updown text-center">+</span>
                 </div>
             </div>
@@ -56,9 +58,9 @@ function renderCart(cartList) {
     cartComponent.innerHTML = html;
 }
 
-function renderPriceSum(cartList) {
+function renderPriceSum(cartList, cartStorage) {
     let sum = cartList.reduce((total, item) => {
-        return total + parseInt(localStorage.getItem(item.id)) * item.price;
+        return total + parseInt(cartStorage.find(el => el.id === item.id).qty) * item.price;
     }, 0);
     let price = String(sum).replace(/(.)(?=(\d{3})+$)/g, '$1,') + " VND";
     totalPrice.innerHTML = price;
@@ -73,23 +75,33 @@ function changeToTalPrice(id) {
 }
 
 function deleteItem(id) {
-    localStorage.removeItem(id);
+    const cartStorage = JSON.parse(localStorage.getItem('cart'));
+    const index = cartStorage.findIndex(item => +item.id === +id);
+    cartStorage.splice(index, 1);
+    localStorage.setItem('cart', JSON.stringify(cartStorage));
     getCartItem();
-    quantityOfCart.innerHTML = localStorage.length;
+    quantityOfCart.innerHTML = cartStorage.length;
 }
 
 function desCartQuantity(id) {
-    let getQuantity = parseInt(localStorage.getItem(id));
+    const cartStorage = JSON.parse(localStorage.getItem('cart'));
+    let getQuantity = cartStorage.find(el => el.id === id).qty;
     let valueInput = document.querySelector(`input[data-val="${id}"]`);
+    const index = cartStorage.findIndex(item => +item.id === +id);
+
     getQuantity = getQuantity - 1;
     if (getQuantity <= 0)
         getQuantity = 1;
-    localStorage.setItem(id, getQuantity);
+    cartStorage[index].qty = getQuantity;
+    localStorage.setItem('cart', JSON.stringify(cartStorage));
+
     valueInput.value = getQuantity;
     changeToTalPrice(id);
 }
 
 function valCartQuantity(id) {
+    const cartStorage = JSON.parse(localStorage.getItem('cart'));
+    const index = cartStorage.findIndex(item => +item.id === +id);
 
     let valueInput = document.querySelector(`input[data-val="${id}"]`);
     if (isNaN(valueInput.value)) {
@@ -97,15 +109,23 @@ function valCartQuantity(id) {
     }
     if (valueInput.value <= 0)
         valueInput.value = 1;
-    localStorage.setItem(id, valueInput.value);
+    cartStorage[index].qty = +valueInput.value;
+
+    localStorage.setItem('cart', JSON.stringify(cartStorage));
     changeToTalPrice(id);
 }
 
 function incCartQuantity(id) {
-    let getQuantity = parseInt(localStorage.getItem(id));
+    const cartStorage = JSON.parse(localStorage.getItem('cart'));
+    let getQuantity = cartStorage.find(el => el.id === id).qty;
     let valueInput = document.querySelector(`input[data-val="${id}"]`);
+    const index = cartStorage.findIndex(item => +item.id === +id);
+
     getQuantity = getQuantity + 1;
-    localStorage.setItem(id, getQuantity);
+
+    cartStorage[index].qty = getQuantity;
+    localStorage.setItem('cart', JSON.stringify(cartStorage));
+
     valueInput.value = getQuantity;
     changeToTalPrice(id);
 }

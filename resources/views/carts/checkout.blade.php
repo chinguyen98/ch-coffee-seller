@@ -268,15 +268,16 @@
     }
 
     const renderCheckoutCart = async () => {
-        const cart = Object.keys(localStorage).join(',');
+        const cartStorage = JSON.parse(localStorage.getItem('cart'));
+        const cartIdList = cartStorage.map(item => item.id).join(',');
 
-        if (cart == "") {
+        if (cartStorage === null || cartStorage.length === 0) {
             checkoutCart.innerHTML = "Hoá đơn của bạn chưa có đơn hàng nào!";
             document.querySelector('input[type="submit"]').classList.add('d-none');
             return;
         }
 
-        const cartList = await fetch(`http://127.0.0.1:8000/api/carts/${cart}`)
+        const cartList = await fetch(`http://127.0.0.1:8000/api/carts/${cartIdList}`)
             .then(res => {
                 return res.json();
             }).then(cartAsJson => {
@@ -288,7 +289,7 @@
         const cartListHtml = cartList.map(cart =>
             `
             <div class="d-flex flex-row p-2">
-                <span class="mr-3 text-primary">${localStorage.getItem(cart.id)}x</span>
+                <span class="mr-3 text-primary">${cartStorage.find(el => el.id === cart.id).qty}x</span>
                 <span data-id="${cart.id}" data-price="${cart.price}">${cart.name}</span>
             </div>
         `
@@ -297,7 +298,7 @@
         const cartListHiddenValue = cartList.map(cart => {
             let id = cart.id;
             return {
-                [cart.id]: localStorage.getItem(cart.id)
+                [cart.id]: cartStorage.find(el => el.id === cart.id).qty
             }
         });
         hiddenCartInput.value = JSON.stringify(cartListHiddenValue);
@@ -314,8 +315,9 @@
     }
 
     function calcCartPrice() {
-        let price = Object.keys(localStorage).reduce((total, item) => {
-            let quantity = parseInt(localStorage.getItem(item));
+        const cartStorage = JSON.parse(localStorage.getItem('cart'));
+        let price = cartStorage.map(item => item.id).reduce((total, item) => {
+            let quantity = parseInt(cartStorage.find(el => el.id === item).qty);
             let price = document.querySelector(`span[data-id="${item}"]`).dataset.price;
             return total + (price * quantity);
         }, 0);
@@ -329,7 +331,7 @@
     }
 
     function clearCart() {
-        localStorage.clear();
+        localStorage.removeItem('cart');
         document.querySelector('#cartNum').innerHTML = 0;
         return true;
     }
@@ -568,15 +570,16 @@
     const hiddenShippingInfoInput = document.querySelector('input[type="hidden"][name="shipping_info"]');
 
     const renderCheckoutCart = async () => {
-        const cart = Object.keys(localStorage).join(',');
+        const cartStorage = JSON.parse(localStorage.getItem('cart'));
+        const cartIdList = cartStorage.map(item => item.id).join(',');
 
-        if (cart == "") {
+        if (cartStorage === null || cartStorage.length === 0) {
             checkoutCart.innerHTML = "Hoá đơn của bạn chưa có đơn hàng nào!";
             document.querySelector('input[type="submit"]').classList.add('d-none');
             return;
         }
 
-        const cartList = await fetch(`http://127.0.0.1:8000/api/carts/${cart}`)
+        const cartList = await fetch(`http://127.0.0.1:8000/api/carts/${cartIdList}`)
             .then(res => {
                 return res.json();
             }).then(cartAsJson => {
@@ -588,7 +591,7 @@
         const cartListHtml = cartList.map(cart =>
             `
             <div class="d-flex flex-row p-2">
-                <span class="mr-3 text-primary">${localStorage.getItem(cart.id)}x</span>
+                <span class="mr-3 text-primary">${cartStorage.find(el => el.id === cart.id).qty}x</span>
                 <span data-id="${cart.id}" data-price="${cart.price}">${cart.name}</span>
             </div>
         `
@@ -597,7 +600,7 @@
         const cartListHiddenValue = cartList.map(cart => {
             let id = cart.id;
             return {
-                [cart.id]: localStorage.getItem(cart.id)
+                [cart.id]: cartStorage.find(el => el.id === cart.id).qty
             }
         });
         hiddenCartInput.value = JSON.stringify(cartListHiddenValue);
@@ -610,8 +613,10 @@
     }
 
     function calcCartPrice() {
-        let price = Object.keys(localStorage).reduce((total, item) => {
-            let quantity = parseInt(localStorage.getItem(item));
+        const cartStorage = JSON.parse(localStorage.getItem('cart'));
+        const cartIdList = cartStorage.map(item => item.id);
+        let price = cartIdList.reduce((total, item) => {
+            let quantity = parseInt(cartStorage.find(el => el.id === item).qty);
             let price = document.querySelector(`span[data-id="${item}"]`).dataset.price;
             return total + (price * quantity);
         }, 0);
@@ -630,7 +635,7 @@
     }
 
     function clearCart() {
-        localStorage.clear();
+        localStorage.removeItem('cart');
         document.querySelector('#cartNum').innerHTML = 0;
         return true;
     }
