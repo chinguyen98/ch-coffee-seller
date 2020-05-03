@@ -20,7 +20,7 @@ const getCartItem = async () => {
 
     const cartIdList = cartStorage.map(item => item.id).join(',');
     showNoCart.innerHTML = "";
-    await fetch(`http://127.0.0.1:8000/api/carts/${cartIdList}`)
+    await fetch(`/api/carts/${cartIdList}`)
         .then(res => {
             return res.json();
         }).then(cartAsJson => {
